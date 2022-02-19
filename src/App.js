@@ -1,23 +1,30 @@
 import React, { createContext, useEffect } from 'react'
-import { Route, Router } from 'react-router-dom'
-import Home from './Home'
-import './App.css';
+import { Route, Routes } from 'react-router-dom'
+import Home from './Components/Home'
+import './Styles/App.css';
+import { DiscContext } from './context'
+import Navbar from './Components/Navbar'
+import Manage from './Components/Manage'
+import Stats from './Components/Stats'
+import Scorecard from './Components/Scorecard'
+import Courses from './Components/Courses'
 
-// export const DiscContext = createContext({name: 'Discify'})
-
-function App() {
-  const [courseName, setCourseName] = useState('')
-  
+const App = () => {
   useEffect(() => {
-
+    
   }, [])
 
   return (
-    // <DiscContext.Provider value={{ name: 'Discify' }}>
-      // <Route exact path='/'>
-        <Home />
-      // </Route>
-    // {/* </DiscContext.Provider> */}
+    <main>
+      <Navbar />
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/manage/' element={<Manage />} />
+        <Route exact path='/stats/' element={<Stats />} />
+        <Route exact path='/scorecard/' element={<Scorecard />} />
+        <Route path='/courses/' element={<Courses />} />
+      </Routes>
+    </main>
   );
 }
 

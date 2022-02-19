@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { createContext } from 'react'
 
-export const DiscContext = React.createContext({
+export const DiscContext = createContext({
   name: 'Discify',
   leagueMembers: [],
   scorecard: {

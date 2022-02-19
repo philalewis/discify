@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React, { createContext, useEffect } from 'react'
+import { Route, Router } from 'react-router-dom'
+import Home from './Home'
 import './App.css';
 
+// export const DiscContext = createContext({name: 'Discify'})
+
 function App() {
+  const [courseName, setCourseName] = useState('')
+  
+  useEffect(() => {
+
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <DiscContext.Provider value={{ name: 'Discify' }}>
+      // <Route exact path='/'>
+        <Home />
+      // </Route>
+    // {/* </DiscContext.Provider> */}
   );
 }
 

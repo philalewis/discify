@@ -1,7 +1,7 @@
 import React, { createContext, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
-import './App.css';
+import './Styles/App.css';
 import { DiscContext } from './context'
 import Navbar from './Components/Navbar'
 import Manage from './Components/Manage'
@@ -11,7 +11,7 @@ import Courses from './Components/Courses'
 
 const App = () => {
   useEffect(() => {
-
+    
   }, [])
 
   return (

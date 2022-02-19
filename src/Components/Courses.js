@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
+import SingleCourse from './SingleCourse'
 
 const Courses = () => {
   const [ searchParams ] = useSearchParams()
@@ -9,7 +10,7 @@ const Courses = () => {
   return (
     <section>
       <h2>IT WORKED!!!!</h2>
-      { searchParams }
+      <SingleCourse />
     </section>
   )
 }

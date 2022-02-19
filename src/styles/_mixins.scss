@@ -1,0 +1,18 @@
+@mixin button-style() {
+  background-color: $orange;
+  color: $white;
+  font-weight: 500;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+@mixin button-hover() {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}

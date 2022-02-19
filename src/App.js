@@ -7,8 +7,9 @@ import Navbar from './Components/Navbar'
 import Manage from './Components/Manage'
 import Stats from './Components/Stats'
 import Scorecard from './Components/Scorecard'
+import Courses from './Components/Courses'
 
-function App() {
+const App = () => {
   useEffect(() => {
 
   }, [])
@@ -21,6 +22,7 @@ function App() {
         <Route exact path='/manage/' element={<Manage />} />
         <Route exact path='/stats/' element={<Stats />} />
         <Route exact path='/scorecard/' element={<Scorecard />} />
+        <Route path='/courses/' element={<Courses />} />
       </Routes>
     </main>
   );

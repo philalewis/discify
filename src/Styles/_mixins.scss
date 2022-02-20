@@ -1,0 +1,30 @@
+@mixin button-style() {
+  background-color: $orange;
+  color: $white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2)
+
+}
+
+@mixin button-hover() {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+@mixin card-shadow() {
+  box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.2)
+}
+
+@mixin nav-shadow() {
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.5)  
+}

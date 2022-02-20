@@ -1,0 +1,9 @@
+@import './_variables';
+@import './_mixins';
+
+nav {
+  @include nav-shadow();
+  background-color: $dark-navy;
+  color: $white;
+  padding: 5%;
+}

@@ -1,0 +1,15 @@
+@import './_variables';
+@import './_mixins';
+
+
+.course-card {
+  background-color: $white;
+  @include card-shadow();
+  @include flex-column();
+  align-items: flex-start;
+  padding: 5% 2%;
+  width: 92%;
+  margin-top: 8%;
+  border-radius: 5px;
+  border: none;
+}

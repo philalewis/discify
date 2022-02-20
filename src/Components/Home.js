@@ -3,15 +3,15 @@ import { DiscContext } from '../context'
 import Searchbar from './Searchbar'
 
 const Home = () => {
-  const { name, scorecard } = useContext(DiscContext)
-  
+  const { discContext } = useContext(DiscContext)
+
   // const [ input, setInput ] = useState('')
 
   return (
     <div>
       <Searchbar />
-      <h1>{name}</h1>
-      <p>{scorecard.par}</p>
+      <h1>{discContext.name}</h1>
+      <p>{discContext.scorecard.par}</p>
     </div>
   )
 }

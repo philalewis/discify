@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, Route, useNavigate } from 'react-router-dom'
 import Courses from './Courses'
 
+
 const Searchbar = () => {
   const [ inputValue, setInputValue ] = useState('')
 
@@ -12,7 +13,9 @@ const Searchbar = () => {
   }
 
   const searchCourses = () => {
-    navigate(`/courses?name=${inputValue}`)
+    !inputValue ?
+      navigate('/courses') :
+      navigate(`/courses?name=${inputValue}`)
   }
 
   return (

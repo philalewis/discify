@@ -9,5 +9,8 @@ export const DiscContext = createContext({
     holes: 18,
     players: []
   },
-  courses: []
+  courses: [],
+
+  setCourses: () => {}
+
 })

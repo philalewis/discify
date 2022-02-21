@@ -1,0 +1,40 @@
+@import './_reset';
+@import './_variables';
+@import './_mixins';
+@import './Card';
+
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  background-color: $grey;
+  height: 100%;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h2 {
+  color: $dark-navy;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+h3 {
+  color: $dark-navy;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+p {
+  color: $dark-navy;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

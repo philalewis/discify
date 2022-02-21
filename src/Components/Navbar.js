@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { DiscContext } from '../context'
 import { Route, Routes, Link } from 'react-router-dom'
+import '../Styles/Navbar.scss'
 
 const Navbar = () => {
   const { name } = useContext(DiscContext)

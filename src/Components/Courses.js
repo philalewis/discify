@@ -4,6 +4,7 @@ import { getAllCourses } from '../apiCalls'
 import { DiscContext } from '../context'
 import SingleCourse from './SingleCourse'
 import Card from './Card'
+import '../Styles/Courses.scss'
 
 const Courses = () => {
   const [ searchParams ] = useSearchParams()
@@ -24,7 +25,7 @@ const Courses = () => {
     })
   }, [])
   return (
-    <section>
+    <section className='course-card-container'>
       <h2>IT WORKED!!!!</h2>
       {currentCourses}
     </section>

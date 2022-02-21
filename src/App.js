@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
-import './Styles/App.css';
+import './Styles/App.scss';
 import { DiscContext } from './context'
 import Navbar from './Components/Navbar'
 import Manage from './Components/Manage'

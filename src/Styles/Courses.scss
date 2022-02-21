@@ -1,0 +1,8 @@
+@import './_variables';
+@import './_mixins';
+
+.course-card-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -34,7 +34,6 @@ const SingleCourse = () => {
   }
 
   const handleClick = (event) => {
-    // console.log(event)
     setDiscContext({ scorecard: {
       courseName: layoutState.name,
       courseId: course.id,

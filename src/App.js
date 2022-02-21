@@ -16,6 +16,7 @@ import { getAllPlayers } from './apiCalls'
 const App = () => {
   const [ discContext, setDiscContext ] = useState({
     name: 'Discify',
+    leagueMembers: [],
     scorecard: {
       courseName: 'West Fork',
       par: 54,

@@ -10,6 +10,7 @@ import Scorecard from './Components/Scorecard'
 import Courses from './Components/Courses'
 import ErrorModal from './Components/ErrorModal'
 import SingleCourse from './Components/SingleCourse'
+import ScorecardForm from './Components/ScorecardForm'
 
 const App = () => {
   const [ discContext, setDiscContext ] = useState({
@@ -37,6 +38,7 @@ const App = () => {
           <Route exact path='/manage/' element={<Manage />} />
           <Route exact path='/stats/' element={<Stats />} />
           <Route exact path='/scorecard/' element={<Scorecard />} />
+          <Route exact path='/setup_scorecard/' element={<ScorecardForm />} />
           <Route path='/courses/' element={<Courses />} />
           <Route exact path='/course/:id' element={<SingleCourse />} />
         </Routes>

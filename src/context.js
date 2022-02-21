@@ -5,6 +5,7 @@ export const DiscContext = createContext({
   leagueMembers: [],
   scorecard: {
     courseName: 'West Fork',
+    courseId: null,
     par: 54,
     holes: 18,
     players: []

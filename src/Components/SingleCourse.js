@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
 import Select from 'react-select'
-import { useLocation } from 'react-router-dom'
-// import { DiscContext } from '../context'
+import { useLocation, Link } from 'react-router-dom'
+import { DiscContext } from '../context'
 import { getSingleCourse } from '../apiCalls'
 
 const SingleCourse = () => {
@@ -11,14 +11,12 @@ const SingleCourse = () => {
 
   const [ course, setCourse ] = useState({})
   const [ layoutState, setLayout ] = useState({})
-  // const [ layoutOptions, setLayoutOptions ] = useState([])
-  // const {discContext, setDiscContext} = useContext(DiscContext)
+  const {discContext, setDiscContext} = useContext(DiscContext)
   
   useEffect(() => {
     getSingleCourse(id)
     .then(data => {
       setCourse(data)
-      // populateOptions(data.layouts)
     })
   }, [])
 
@@ -33,6 +31,16 @@ const SingleCourse = () => {
 
   const onChange = (layout) => {
     setLayout(layout)
+  }
+
+  const handleClick = (event) => {
+    // console.log(event)
+    setDiscContext({ scorecard: {
+      courseName: layoutState.name,
+      courseId: course.id,
+      par: layoutState.total_par,
+      holes: layoutState.holes
+    }})
   }
 
   return (
@@ -52,6 +60,9 @@ const SingleCourse = () => {
           <p>Distance: {layoutState.total_distance}</p>
         </section>
       }
+      <Link to='/setup_scorecard/'>
+        <button className="choose-course-btn" onClick={handleClick}>CHOOSE COURSE</button>
+      </Link>
     </>
   )
 }

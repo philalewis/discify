@@ -1,4 +1,3 @@
-
 export const getAllCourses = () => {
 
   return fetch('https://discify-api.herokuapp.com/api/v1/courses')
@@ -10,7 +9,7 @@ export const addNewPlayer = (name) => {
   return fetch('https://discify-api.herokuapp.com/api/v1/players', {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       player: {

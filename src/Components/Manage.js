@@ -14,11 +14,8 @@ const Manage = () => {
   const addPlayer = (event) => {
     event.preventDefault()
     addNewPlayer(nameInput)
-    .then(() => {
-      getAllPlayers()
-      .then(data => {
-        setDiscContext({leagueMembers: data})
-      })
+    .then(data => {
+      setDiscContext({leagueMembers: [...discContext.leagueMembers, data]})
     })
   }
 
@@ -31,7 +28,7 @@ const Manage = () => {
 
   const leagueMembers = discContext.leagueMembers ? discContext.leagueMembers.map(member => {
     return (
-      <p>{member.name}</p>
+      <p key={member.id}>{member.name}</p>
     )
   }) : null
 

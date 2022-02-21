@@ -12,5 +12,4 @@ export const DiscContext = createContext({
   courses: [],
 
   setCourses: () => {}
-
 })

@@ -17,13 +17,13 @@ const Courses = () => {
     )
   })
 
-
   useEffect(() => {
     getAllCourses()
     .then(data =>  {
       setDiscContext({courses: data})
     })
   }, [])
+  
   return (
     <section className='course-card-container'>
       <h2>IT WORKED!!!!</h2>

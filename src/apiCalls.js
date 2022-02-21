@@ -1,5 +1,4 @@
 const handleError = (response) => {
-  console.log(response);
   if(!response.ok) {
     throw `${response.status} ${response.statusText}`
   } else {

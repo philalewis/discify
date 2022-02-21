@@ -1,6 +1,8 @@
 import React, {useState, useContext, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import {addNewPlayer, getAllPlayers} from '../apiCalls'
 import { DiscContext } from '../context'
+import '../Styles/Manage.scss'
 
 
 const Manage = () => {
@@ -47,6 +49,8 @@ const Manage = () => {
         <button className='add-player-btn' onClick={(event) => addPlayer(event)}>ADD</button>
       </form>
       {leagueMembers}
+
+      <Link to='/'> <button className='home-btn'>DONE</button> </Link>
     </>
   )
 }

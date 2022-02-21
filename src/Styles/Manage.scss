@@ -1,0 +1,6 @@
+@import './_variables';
+@import './_mixins';
+
+.home-btn {
+  @include button-style()
+}

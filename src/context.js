@@ -10,7 +10,7 @@ export const DiscContext = createContext({
     players: []
   },
   courses: [],
+  error: null,
 
   setCourses: () => {}
-
 })

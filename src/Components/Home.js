@@ -11,7 +11,6 @@ const Home = () => {
     <div>
       <Searchbar />
       <h1>{discContext.name}</h1>
-      <p>{discContext.scorecard.par}</p>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import Manage from './Components/Manage'
 import Stats from './Components/Stats'
 import Scorecard from './Components/Scorecard'
 import Courses from './Components/Courses'
+import ErrorModal from './Components/ErrorModal'
 
 const App = () => {
   const [ discContext, setDiscContext ] = useState({
@@ -17,7 +18,8 @@ const App = () => {
       par: 54,
       holes: 18,
     },
-    courses: []
+    courses: [],
+    error: null
   })
 
   useEffect(() => {
@@ -28,6 +30,7 @@ const App = () => {
     <main>
       <DiscContext.Provider value={{ discContext, setDiscContext }}>
         <Navbar />
+        {discContext.error && <ErrorModal />}
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/manage/' element={<Manage />} />

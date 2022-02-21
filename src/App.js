@@ -11,6 +11,7 @@ import Courses from './Components/Courses'
 import ErrorModal from './Components/ErrorModal'
 import SingleCourse from './Components/SingleCourse'
 import ScorecardForm from './Components/ScorecardForm'
+import { getAllPlayers } from './apiCalls'
 
 const App = () => {
   const [ discContext, setDiscContext ] = useState({
@@ -25,7 +26,11 @@ const App = () => {
   })
 
   useEffect(() => {
-
+    getAllPlayers()
+    .then(data => {
+      setDiscContext({leagueMembers: data})
+    })
+    .catch(error => setDiscContext({error: error}))
   }, [])
 
   return (

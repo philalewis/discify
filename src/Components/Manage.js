@@ -23,13 +23,13 @@ const Manage = () => {
     .catch(error => setDiscContext({error: error}))
   }
 
-  useEffect(() => {
-    getAllPlayers()
-    .then(data => {
-      setDiscContext({leagueMembers: data})
-    })
-    .catch(error => setDiscContext({error: error}))
-  }, [])
+  // useEffect(() => {
+  //   getAllPlayers()
+  //   .then(data => {
+  //     setDiscContext({leagueMembers: data})
+  //   })
+  //   .catch(error => setDiscContext({error: error}))
+  // }, [])
 
   const leagueMembers = discContext.leagueMembers ? discContext.leagueMembers.map(member => {
     return (

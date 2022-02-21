@@ -9,6 +9,7 @@ import Stats from './Components/Stats'
 import Scorecard from './Components/Scorecard'
 import Courses from './Components/Courses'
 import ErrorModal from './Components/ErrorModal'
+import SingleCourse from './Components/SingleCourse'
 
 const App = () => {
   const [ discContext, setDiscContext ] = useState({
@@ -37,6 +38,7 @@ const App = () => {
           <Route exact path='/stats/' element={<Stats />} />
           <Route exact path='/scorecard/' element={<Scorecard />} />
           <Route path='/courses/' element={<Courses />} />
+          <Route exact path='/course/:id' element={<SingleCourse />} />
         </Routes>
       </DiscContext.Provider>
     </main>

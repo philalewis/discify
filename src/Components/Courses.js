@@ -22,8 +22,9 @@ const Courses = () => {
     .then(data =>  {
       setDiscContext({courses: data})
     })
+    .catch(error => setDiscContext({error: error}))
   }, [])
-  
+
   return (
     <section className='course-card-container'>
       <h2>IT WORKED!!!!</h2>

@@ -17,6 +17,7 @@ const Manage = () => {
     .then(data => {
       setDiscContext({leagueMembers: [...discContext.leagueMembers, data]})
     })
+    .catch(error => setDiscContext({error: error}))
   }
 
   useEffect(() => {
@@ -24,6 +25,7 @@ const Manage = () => {
     .then(data => {
       setDiscContext({leagueMembers: data})
     })
+    .catch(error => setDiscContext({error: error}))
   }, [])
 
   const leagueMembers = discContext.leagueMembers ? discContext.leagueMembers.map(member => {

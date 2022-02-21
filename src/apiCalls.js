@@ -1,7 +1,16 @@
+const handleError = (response) => {
+  console.log(response);
+  if(!response.ok) {
+    throw `${response.status} ${response.statusText}`
+  } else {
+    return response.json()
+  }
+}
+
 export const getAllCourses = () => {
 
   return fetch('https://discify-api.herokuapp.com/api/v1/courses')
-    .then(response => response.json())
+    .then(response => handleError(response))
 }
 
 export const addNewPlayer = (name) => {
@@ -17,11 +26,11 @@ export const addNewPlayer = (name) => {
       }
     })
   })
-  .then(response => response.json())
+  .then(response => handleError(response))
 }
 
 export const getAllPlayers = () => {
   
   return fetch('https://discify-api.herokuapp.com/api/v1/players')
-    .then(response => response.json())
+    .then(response => handleError(response))
 }

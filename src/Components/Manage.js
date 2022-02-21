@@ -18,6 +18,7 @@ const Manage = () => {
     addNewPlayer(nameInput)
     .then(data => {
       setDiscContext({leagueMembers: [...discContext.leagueMembers, data]})
+      setNameInput('')
     })
     .catch(error => setDiscContext({error: error}))
   }

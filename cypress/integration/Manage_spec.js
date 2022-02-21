@@ -1,0 +1,3 @@
+describe('Manage league component', () => {
+
+})

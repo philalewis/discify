@@ -1,0 +1,47 @@
+{
+    "id": 15,
+    "name": "Paco Sanchez",
+    "description": "Signs not labeled, some missing. Challenging course. Hole 1 under construction, tee off from sidewalk.",
+    "city": "Denver",
+    "state": "CO",
+    "location": null,
+    "rating": 3.5,
+    "holes": 21,
+    "availability": "Year Round",
+    "tees": "Concrete",
+    "targets": "Mach V",
+    "property": "Mixed Use, Public Park",
+    "services": "",
+    "established": "2006",
+    "layouts": [
+        {
+            "name": "Main Layout 21 Holes Current 10/15/2020",
+            "description": "Note: Hole 1 sidewalk tee off. Additional Note: Hole 8, MANDO right of both transmission towers. Par is up to date.",
+            "total_par": 70,
+            "total_distance": 8450,
+            "holes": [
+                {
+                    "hole_number": 1,
+                    "par": 4,
+                    "distance": 575
+                },
+                {
+                    "hole_number": 2,
+                    "par": 4,
+                    "distance": 615
+                }
+                // ... holes
+            ]
+        },
+        {
+            "name": "Front 9 Loop",
+            "description": "1-8, 21 coming back ",
+            "total_par": 31,
+            "total_distance": 4483,
+            "holes": [
+                // ... holes
+            ]
+        }
+        // ... layouts
+    ]
+}

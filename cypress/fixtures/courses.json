@@ -1,0 +1,34 @@
+[
+  {
+        "id": 1,
+        "name": "Village Greens",
+        "description": "This is a course with a description",
+        "city": "Greenwood Village",
+        "state": "CO",
+        "location": null,
+        "rating": 4.0,
+        "holes": 9,
+        "availability": "Year Round",
+        "tees": "Concrete",
+        "targets": "Mach V",
+        "property": "Public Park",
+        "services": "Dogs Allowed, Restrooms Available",
+        "established": "2013"
+    },
+    {
+        "id": 2,
+        "name": "Peace with Christ Lutheran Church",
+        "description": null,
+        "city": "Aurora",
+        "state": "CO",
+        "location": null,
+        "rating": 3.1,
+        "holes": 9,
+        "availability": "Year Round - It is at a church. Sundays are hit or miss.",
+        "tees": null,
+        "targets": null,
+        "property": "Mixed Use, Church",
+        "services": "Dogs Allowed",
+        "established": "2000"
+    }
+]

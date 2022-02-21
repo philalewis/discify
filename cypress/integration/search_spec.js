@@ -1,0 +1,3 @@
+describe('Search courses fuctionality', () => {
+
+})

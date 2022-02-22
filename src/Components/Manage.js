@@ -17,10 +17,16 @@ const Manage = () => {
     event.preventDefault()
     addNewPlayer(nameInput)
     .then(data => {
-      setDiscContext({leagueMembers: [...discContext.leagueMembers, data]})
+      setDiscContext({
+        ...discContext,
+        leagueMembers: [...discContext.leagueMembers, data]
+      })
       setNameInput('')
     })
-    .catch(error => setDiscContext({error: error}))
+    .catch(error => setDiscContext({
+      ...discContext,
+      error: error
+    }))
   }
 
   const leagueMembers = discContext.leagueMembers ? discContext.leagueMembers.map(member => {

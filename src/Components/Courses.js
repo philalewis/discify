@@ -20,9 +20,15 @@ const Courses = () => {
   useEffect(() => {
     getAllCourses()
     .then(data =>  {
-      setDiscContext({courses: data})
+      setDiscContext({
+        ...discContext,
+        courses: data
+      })
     })
-    .catch(error => setDiscContext({error: error}))
+    .catch(error => setDiscContext({
+      ...discContext,
+      error: error
+    }))
   }, [])
 
   return (

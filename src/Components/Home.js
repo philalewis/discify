@@ -5,8 +5,6 @@ import Searchbar from './Searchbar'
 const Home = () => {
   const { discContext } = useContext(DiscContext)
 
-  // const [ input, setInput ] = useState('')
-
   return (
     <div>
       <Searchbar />

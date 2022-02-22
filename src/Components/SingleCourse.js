@@ -34,12 +34,17 @@ const SingleCourse = () => {
   }
 
   const handleClick = (event) => {
-    setDiscContext({ scorecard: {
-      courseName: layoutState.name,
-      courseId: course.id,
-      par: layoutState.total_par,
-      holes: layoutState.holes
-    }})
+    setDiscContext({
+      ...discContext,
+      scorecard: {
+        ...discContext.scorecard,
+        courseName: layoutState.name,
+        courseId: course.id,
+        par: layoutState.total_par,
+        holes: layoutState.holes,
+        layout: layoutState,
+      }
+    })
   }
 
   return (

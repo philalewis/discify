@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
 import './Styles/App.scss';
@@ -29,7 +29,7 @@ const App = () => {
   useEffect(() => {
     getAllPlayers()
     .then(data => {
-      setDiscContext({leagueMembers: data})
+      setDiscContext({...discContext, leagueMembers: data})
     })
     .catch(error => setDiscContext({error: error}))
   }, [])

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Select from 'react-select'
 import { DiscContext } from '../context'
 
@@ -14,7 +15,6 @@ const ScorecardForm = () => {
   })
 
   const handleChange = (event) => {
-    console.log(event)
     setPlayers([ ...players, event.value ])
   }
 
@@ -22,11 +22,24 @@ const ScorecardForm = () => {
     players.map(player => <p key={player.id}>{player.name}</p>) :
     null
 
+  const handleClick = () => {
+    setDiscContext({
+      ...discContext,
+      scorecard: {
+        ...discContext.scorecard,
+        players: players
+      }
+    })
+  }
+
   return (
     <>
       <h2>Choose Players</h2>
       <Select options={options} onChange={event => handleChange(event)}/>
       {playerNames}
+      <Link to='/scorecard/'>
+        <button onClick={handleClick}>START ROUND</button>
+      </Link>
     </>
   )
 }

@@ -46,7 +46,8 @@ const SingleCourse = () => {
       courseId: course.id,
       layout: layout,
       par: layout.total_par,
-      holes: layout.holes
+      holes: layout.holes,
+      players: []
     })
   }
 

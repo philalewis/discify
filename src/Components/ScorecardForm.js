@@ -16,11 +16,15 @@ const ScorecardForm = () => {
   })
 
   const handleChange = event => {
-    setScorecard({ ...scorecard, players: [...scorecard.players, event.value] })
+    setScorecard({
+        ...scorecard, 
+        players: [...scorecard.players, event.value] 
+    })
+    setPlayers([...players, event.value])
   }
 
-  const playerNames = leagueMembers.length > 0 ?
-    leagueMembers.map(player => <p key={player.id}>{player.name}</p>) :
+  const playerNames = players.length > 0 ?
+    players.map(player => <p key={player.id}>{player.name}</p>) :
     null
 
   const handleClick = () => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
 import './Styles/App.scss';
-import { DiscContext } from './context'
+import { CourseInfo, ScorecardInfo, LeagueMembers, Errors } from './context'
 import Navbar from './Components/Navbar'
 import Manage from './Components/Manage'
 import Stats from './Components/Stats'
@@ -14,41 +14,53 @@ import ScorecardForm from './Components/ScorecardForm'
 import { getAllPlayers } from './apiCalls'
 
 const App = () => {
-  const [ discContext, setDiscContext ] = useState({
-    name: 'Discify',
-    leagueMembers: [],
-    scorecard: {
-      courseName: 'West Fork',
-      par: 54,
-      holes: 18,
-    },
+  const [ leagueMembers, setLeagueMembers ] = useState([])
+  const [ errorMessage, setErrorMessage ] = useState(null)
+
+  const [ courseInfo, setCourseInfo ] = useState({
     courses: [],
-    error: null
+    currentCourse: {}
+  })
+
+  const [ scorecard, setScorecard ] = useState({
+    courseName: 'West Fork',
+    courseId: null,
+    par: 54,
+    holes: 18,
+    players: [],
+    layout: {},
+    inProgress: false
   })
 
   useEffect(() => {
     getAllPlayers()
     .then(data => {
-      setDiscContext({...discContext, leagueMembers: data})
+      setLeagueMembers(data)
     })
-    .catch(error => setDiscContext({error: error}))
+    .catch(error => setErrorMessage(error))
   }, [])
 
   return (
     <main>
-      <DiscContext.Provider value={{ discContext, setDiscContext }}>
-        <Navbar />
-        {discContext.error && <ErrorModal />}
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route exact path='/manage/' element={<Manage />} />
-          <Route exact path='/stats/' element={<Stats />} />
-          <Route exact path='/scorecard/' element={<Scorecard />} />
-          <Route exact path='/setup_scorecard/' element={<ScorecardForm />} />
-          <Route path='/courses/' element={<Courses />} />
-          <Route exact path='/course/:id' element={<SingleCourse />} />
-        </Routes>
-      </DiscContext.Provider>
+      <CourseInfo.Provider value={{ courseInfo, setCourseInfo }}>
+        <ScorecardInfo.Provider value={{ scorecard, setScorecard }}>
+          <LeagueMembers.Provider value={{ leagueMembers, setLeagueMembers }}>
+            <Errors.Provider value={{ errorMessage, setErrorMessage }}>
+              <Navbar />
+              {errorMessage.error && <ErrorModal />}
+              <Routes>
+                <Route exact path='/' element={<Home />} />
+                <Route exact path='/manage/' element={<Manage />} />
+                <Route exact path='/stats/' element={<Stats />} />
+                <Route exact path='/scorecard/' element={<Scorecard />} />
+                <Route exact path='/setup_scorecard/' element={<ScorecardForm />} />
+                <Route path='/courses/' element={<Courses />} />
+                <Route exact path='/course/:id' element={<SingleCourse />} />
+              </Routes>
+            </Errors.Provider>
+          </LeagueMembers.Provider>
+        </ScorecardInfo.Provider>
+      </CourseInfo.Provider>
     </main>
   );
 }

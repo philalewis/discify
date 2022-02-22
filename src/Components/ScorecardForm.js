@@ -1,34 +1,32 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Select from 'react-select'
-import { DiscContext } from '../context'
+import { LeagueMembers, ScorecardInfo } from '../context'
 
 const ScorecardForm = () => {
   const [ players, setPlayers ] = useState([])
-  const { discContext, setDiscContext } = useContext(DiscContext)
+  const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
+  const { scorecard, setScorecard } = useContext(ScorecardInfo)
 
-  const options = discContext.leagueMembers.map(member => {
+  const options = leagueMembers.map(member => {
     return {
       value: member,
       label: member.name
     }
   })
 
-  const handleChange = (event) => {
-    setPlayers([ ...players, event.value ])
+  const handleChange = event => {
+    setScorecard({ ...scorecard, players: [...scorecard.players, event.value] })
   }
 
-  const playerNames = players.length > 0 ?
-    players.map(player => <p key={player.id}>{player.name}</p>) :
+  const playerNames = leagueMembers.length > 0 ?
+    leagueMembers.map(player => <p key={player.id}>{player.name}</p>) :
     null
 
   const handleClick = () => {
-    setDiscContext({
-      ...discContext,
-      scorecard: {
-        ...discContext.scorecard,
-        players: players
-      }
+    setScorecard({
+      ...scorecard,
+      inProgress: true
     })
   }
 

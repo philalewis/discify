@@ -1,34 +1,26 @@
 import React, { useEffect, useContext } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import { getAllCourses } from '../apiCalls'
-import { DiscContext } from '../context'
-import SingleCourse from './SingleCourse'
+import { CourseInfo, Errors } from '../context'
 import Card from './Card'
 import '../Styles/Courses.scss'
 
 const Courses = () => {
-  const [ searchParams ] = useSearchParams()
-  const { discContext, setDiscContext } = useContext(DiscContext)
+  const { courseInfo, setCourseInfo } = useContext(CourseInfo)
+  const { errorMessage, setErrorMessage } = useContext(Errors)
 
-  const currentCourses = discContext.courses.map(course => {
-    console.log(course)
-    return (
-      <Card course={course} key={course.id}/>
-    )
+  const currentCourses = courseInfo.courses.map(course => {
+    return <Card course={course} key={course.id}/>
   })
 
   useEffect(() => {
     getAllCourses()
     .then(data =>  {
-      setDiscContext({
-        ...discContext,
+      setCourseInfo({
+        ...courseInfo,
         courses: data
       })
     })
-    .catch(error => setDiscContext({
-      ...discContext,
-      error: error
-    }))
+    .catch(error => setErrorMessage(error))
   }, [])
 
   return (

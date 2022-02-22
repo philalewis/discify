@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react'
-import { DiscContext } from '../context'
+import { LeagueMembers } from '../context'
 import Searchbar from './Searchbar'
 
 const Home = () => {
-  const { discContext } = useContext(DiscContext)
+  const { leagueMembers } = useContext(LeagueMembers)
+  const members = leagueMembers.map(member => <p key={member.id}>{member.name}</p>)
 
   return (
     <div>
       <Searchbar />
-      <h1>{discContext.name}</h1>
+      <h1>{members}</h1>
     </div>
   )
 }

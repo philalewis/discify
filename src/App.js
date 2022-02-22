@@ -47,7 +47,7 @@ const App = () => {
           <LeagueMembers.Provider value={{ leagueMembers, setLeagueMembers }}>
             <Errors.Provider value={{ errorMessage, setErrorMessage }}>
               <Navbar />
-              {errorMessage.error && <ErrorModal />}
+              {errorMessage && <ErrorModal />}
               <Routes>
                 <Route exact path='/' element={<Home />} />
                 <Route exact path='/manage/' element={<Manage />} />

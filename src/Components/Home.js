@@ -4,7 +4,9 @@ import Searchbar from './Searchbar'
 
 const Home = () => {
   const { leagueMembers } = useContext(LeagueMembers)
-  const members = leagueMembers.map(member => <p key={member.id}>{member.name}</p>)
+  const members = leagueMembers.map(member => {
+    return <p key={member.id}>{member.name}</p>
+  })
 
   return (
     <div>

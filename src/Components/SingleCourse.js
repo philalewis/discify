@@ -34,8 +34,7 @@ const SingleCourse = () => {
     setLayout(layout)
   }
 
-  const handleClick = (event) => {
-    event.preventDefault()
+  const handleClick = () => {
     setCourseInfo({
       ...courseInfo,
       currentCourse: {
@@ -43,7 +42,6 @@ const SingleCourse = () => {
       }
     })
     setScorecard({
-      ...scorecard,
       courseName: course.name,
       courseId: course.id,
       layout: layout,
@@ -53,7 +51,7 @@ const SingleCourse = () => {
   }
 
   return (
-    <form>
+    <>
       <h2>{course.name}</h2>
       <p>{course.location}</p>
       {course.rating > 0 && <p>{course.rating} /5</p>}
@@ -72,10 +70,10 @@ const SingleCourse = () => {
       <Link to='/setup_scorecard/'>
         <button
           className="choose-course-btn"
-          onClick={event => handleClick(event)}
+          onClick={handleClick}
         >CHOOSE COURSE</button>
       </Link>
-    </form>
+    </>
   )
 }
 

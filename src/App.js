@@ -19,6 +19,7 @@ const App = () => {
 
   const [ courseInfo, setCourseInfo ] = useState({
     courses: [],
+    searchURL: '',
     currentCourse: {}
   })
 

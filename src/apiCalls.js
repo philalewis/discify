@@ -11,6 +11,11 @@ export const getAllCourses = () => {
     .then(response => handleError(response))
 }
 
+export const getFilteredCourses = (params) => {
+  return fetch(`https://discify-api.herokuapp.com/api/v1/${params}`)
+  .then(response => handleError(response))
+}
+
 export const addNewPlayer = (name) => {
   return fetch('https://discify-api.herokuapp.com/api/v1/players', {
     method: 'POST',

@@ -21,7 +21,12 @@ const Searchbar = () => {
 
   return (
     <div className='search-bar-container'>
-      <input type="text" className="search-bar" value={inputValue} onChange={event => handleChange(event)}/>
+      <input 
+        type="text" 
+        className="search-bar" 
+        value={inputValue} 
+        onChange={event => handleChange(event)}
+      />
       <button className="search-btn" onClick={searchCourses}>SEARCH</button>
     </div>
   )

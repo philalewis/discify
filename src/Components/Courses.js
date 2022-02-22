@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { getAllCourses } from '../apiCalls'
 import { CourseInfo, Errors } from '../context'
 import Card from './Card'
@@ -9,7 +10,11 @@ const Courses = () => {
   const { errorMessage, setErrorMessage } = useContext(Errors)
 
   const currentCourses = courseInfo.courses.map(course => {
-    return <Card course={course} key={course.id}/>
+    return (
+      <Link to={`/course/${course.id}`} key={course.id}>
+        <Card course={course} />
+      </Link>
+    )
   })
 
   useEffect(() => {

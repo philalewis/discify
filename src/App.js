@@ -4,6 +4,7 @@ import Home from './Components/Home'
 import './Styles/App.scss';
 import { CourseInfo, ScorecardInfo, LeagueMembers, Errors } from './context'
 import Navbar from './Components/Navbar'
+import DropdownMenu from './Components/DropdownMenu'
 import Manage from './Components/Manage'
 import Stats from './Components/Stats'
 import Scorecard from './Components/Scorecard'
@@ -16,6 +17,7 @@ import { getAllPlayers } from './apiCalls'
 const App = () => {
   const [ leagueMembers, setLeagueMembers ] = useState([])
   const [ errorMessage, setErrorMessage ] = useState(null)
+  const [clicked, setClick] = useState(false)
 
   const [ courseInfo, setCourseInfo ] = useState({
     courses: [],
@@ -41,6 +43,14 @@ const App = () => {
     inProgress: false
   })
 
+  const toggleClick = () => {
+    if(!clicked){
+      setClick(true)
+    } else {
+      setClick(false)
+    }
+  }
+
   useEffect(() => {
     getAllPlayers()
     .then(data => {
@@ -55,7 +65,8 @@ const App = () => {
         <ScorecardInfo.Provider value={{ scorecard, setScorecard }}>
           <LeagueMembers.Provider value={{ leagueMembers, setLeagueMembers }}>
             <Errors.Provider value={{ errorMessage, setErrorMessage }}>
-              <Navbar />
+              <Navbar toggleClick={toggleClick}/>
+              {clicked && <DropdownMenu />}
               {errorMessage && <ErrorModal />}
               <Routes>
                 <Route exact path='/' element={<Home />} />

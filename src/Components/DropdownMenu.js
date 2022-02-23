@@ -5,10 +5,18 @@ const DropdownMenu = () => {
 
   return(
     <div className='dropdown-container'>
-    <Link to="/">HOME</Link>
-    <Link to="/manage/">MANAGE LEAGUE</Link>
-    <Link to="/stats/">LEAGUE STATS</Link>
-    <Link to="/scorecard/">SCORECARD</Link>
+      <Link to="/">
+        <button className='home-link-btn'>HOME</button>
+      </Link>
+      <Link to="/manage/">
+        <button className='manage-link-btn'>MANAGE LEAGUE</button>
+      </Link>
+      <Link to="/stats/">
+        <button className='stats-link-btn'>LEAGUE STATS</button>
+      </Link>
+      <Link to="/scorecard/">
+        <button className='score-link-btn'>SCORECARD</button>
+      </Link>
     </div>
 
   )

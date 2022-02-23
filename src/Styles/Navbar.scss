@@ -6,8 +6,17 @@ nav {
   background-color: $dark-navy;
   color: $white;
   padding: 5%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo {
   width: 53%;
+}
+
+.dropdown-button {
+  background-color: transparent;
+  border: none;
+  color: $white;
+  font-size: 40px;
 }

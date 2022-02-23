@@ -17,7 +17,7 @@ const ScorecardForm = () => {
 
   const handleChange = event => {
     setScorecard({
-        ...scorecard, 
+        ...scorecard,
         players: [...scorecard.players, event.value]
     })
     setPlayers([...players, event.value])
@@ -40,7 +40,7 @@ const ScorecardForm = () => {
       <Select options={options} onChange={event => handleChange(event)}/>
       {playerNames}
       <Link to='/scorecard/'>
-        <button onClick={handleClick}>START ROUND</button>
+        <button className='start-round-btn' onClick={handleClick}>START ROUND</button>
       </Link>
     </>
   )

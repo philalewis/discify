@@ -23,7 +23,7 @@ const Scorecard = () => {
     currentHole.players[id].score = score
     setCurrentHole(currentHole)
   }
-  
+
   useEffect(() => {
     setCurrentHole({
       number: 1,
@@ -35,8 +35,8 @@ const Scorecard = () => {
     return scorecard.players.map(player => {
       return (
         <Player
-          name={player.name} 
-          key={player.id} 
+          name={player.name}
+          key={player.id}
           id={player.id}
           par={scorecard.layout.holes.find(hole => {
             return hole.hole_number === currentHole.number
@@ -52,7 +52,7 @@ const Scorecard = () => {
     <div>
       <h2>Hole {currentHole.number}</h2>
       { currentHole.players && displayPlayers() }
-      <button>NEXT HOLE</button>
+      <button className='next-hole-btn'>NEXT HOLE</button>
     </div>
   )
 }

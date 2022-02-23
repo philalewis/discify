@@ -19,9 +19,9 @@ const Player = ({ name, id, totalScore, par, changeScore }) => {
   return (
     <div className="player-score-input" key={id}>
       <h3>{name} ({totalScore})</h3>
-      <button onClick={minus}>-</button>
+      <button className='minus-btn' onClick={minus}>-</button>
       <p>{score}</p>
-      <button onClick={plus}>+</button>
+      <button className='plus-btn' onClick={plus}>+</button>
     </div>
   )
 }

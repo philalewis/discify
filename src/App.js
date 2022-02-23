@@ -26,6 +26,7 @@ const App = () => {
   const [ scorecard, setScorecard ] = useState({
     courseName: 'West Fork',
     courseId: null,
+    roundId: null,
     par: 54,
     holes: 18,
     players: [],

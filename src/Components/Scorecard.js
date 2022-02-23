@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { ScorecardInfo } from '../context'
+import { ScorecardInfo, Errors } from '../context'
 import Player from './Player'
+import { scoreAHole } from '../apiCalls'
 
 const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
   const [ currentHole, setCurrentHole ] = useState({})
+  const {errorMessage, setErrorMessage} = useContext(Errors)
 
   const currentPlayers = () => {
     const result = {}
@@ -12,7 +14,7 @@ const Scorecard = () => {
       result[player.id] = {
         name: player.name,
         id: player.id,
-        score: 0,
+        score: scorecard.layout.holes[0].par,
         totalScore: 0
       }
     })
@@ -21,13 +23,17 @@ const Scorecard = () => {
 
   const changeScore = (id, score) => {
     currentHole.players[id].score = score
+    console.log(currentHole.players[id].score);
     setCurrentHole(currentHole)
   }
 
   useEffect(() => {
+    console.log(scorecard.layout.holes);
     setCurrentHole({
       number: 1,
-      players: currentPlayers()
+      players: currentPlayers(),
+      par: scorecard.layout.holes.find(hole => hole.hole_number === 1).par,
+      distance: scorecard.layout.holes.find(hole => hole.hole_number === 1).distance
     })
   }, [])
 
@@ -48,11 +54,56 @@ const Scorecard = () => {
     })
   }
 
+  const nextHole = (prevHoleScores) => {
+    const hole = scorecard.layout.holes.find(hole => hole.hole_number === currentHole.number + 1)
+    setCurrentHole({
+      number: hole.hole_number,
+      players: updatePlayerScores(prevHoleScores),
+      par: hole.par,
+      distance: hole.distance
+    })
+  }
+
+  const updatePlayerScores = (prevHoleScores) => {
+    const updatedPlayers = {}
+    prevHoleScores.forEach(player => {
+      updatedPlayers[player.player_id] = { 
+        name: currentHole.players[player.player_id].name,
+        id: currentHole.players[player.player_id].id,
+        score: 0,
+        totalScore: player.score + currentHole.players[player.player_id].totalScore
+      }
+    })
+    return updatedPlayers
+  }
+
+  const postHoleScores = () => {
+    // console.log(currentHole.players);
+    const currentPlayers = Object.keys(currentHole.players)
+    const playerScores = currentPlayers.map(player_id => {
+    console.log(currentHole.players[player_id]);
+      return {
+        player_id: currentHole.players[player_id].id, 
+        strokes: currentHole.players[player_id].score
+      }
+    })
+    
+    const body = {
+      hole: {
+        hole_number: currentHole.number,
+        player_scores: playerScores
+      }
+    }
+    scoreAHole(body, scorecard.roundId)
+    .then(data => nextHole(data.scores))
+    .catch(error => setErrorMessage(error))
+  }
+
   return (
     <div>
       <h2>Hole {currentHole.number}</h2>
       { currentHole.players && displayPlayers() }
-      <button className='next-hole-btn'>NEXT HOLE</button>
+      <button className='next-hole-btn' onClick={postHoleScores}>NEXT HOLE</button>
     </div>
   )
 }

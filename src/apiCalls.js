@@ -40,3 +40,28 @@ export const getSingleCourse = (id) => {
   return fetch(`https://discify-api.herokuapp.com/api/v1/courses/${id}`)
   .then(response => handleError(response))
 }
+
+
+export const startRound = (roundData) => {
+  return fetch('https://discify-api.herokuapp.com/api/v1/rounds', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    }, 
+    body: JSON.stringify({
+      round: roundData
+    })
+  })
+  .then(response => handleError(response))
+}
+
+export const scoreAHole = (body, id) => {
+  return fetch(`https://discify-api.herokuapp.com/api/v1/rounds/${id}/score_hole`, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  })
+  .then(response => handleError(response))
+}

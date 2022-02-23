@@ -1,0 +1,169 @@
+{
+  "id": 10,
+  "name": "Green Valley Ranch",
+  "description": "Lightly wooded municipal park with concrete walking paths. North holes are in an open flood plain. Established September 2012.",
+  "city": "Denver",
+  "state": "CO",
+  "location": null,
+  "rating": 3.4,
+  "holes": 18,
+  "availability": "Year Round",
+  "tees": "Gravel",
+  "targets": "Mach V",
+  "property": "",
+  "services": "",
+  "established": "2012",
+  "layouts": [
+    {
+    "name": "Main",
+    "description": null,
+    "total_par": 54,
+    "total_distance": 5694,
+    "holes": [
+      {
+      "hole_number": 1,
+      "par": 3,
+      "distance": 306
+      },
+      {
+      "hole_number": 2,
+      "par": 3,
+      "distance": 278
+      },
+      {
+      "hole_number": 3,
+      "par": 3,
+      "distance": 408
+      },
+      {
+      "hole_number": 4,
+      "par": 3,
+      "distance": 237
+      },
+      {
+      "hole_number": 5,
+      "par": 3,
+      "distance": 238
+      },
+      {
+      "hole_number": 6,
+      "par": 3,
+      "distance": 238
+      },
+      {
+      "hole_number": 7,
+      "par": 3,
+      "distance": 262
+      },
+      {
+      "hole_number": 8,
+      "par": 3,
+      "distance": 434
+      },
+      {
+      "hole_number": 9,
+      "par": 3,
+      "distance": 438
+      },
+      {
+      "hole_number": 10,
+      "par": 3,
+      "distance": 356
+      },
+      {
+      "hole_number": 11,
+      "par": 3,
+      "distance": 381
+      },
+      {
+      "hole_number": 12,
+      "par": 3,
+      "distance": 278
+      },
+      {
+      "hole_number": 13,
+      "par": 3,
+      "distance": 287
+      },
+      {
+      "hole_number": 14,
+      "par": 3,
+      "distance": 284
+      },
+      {
+      "hole_number": 15,
+      "par": 3,
+      "distance": 343
+      },
+      {
+      "hole_number": 16,
+      "par": 3,
+      "distance": 341
+      },
+      {
+      "hole_number": 17,
+      "par": 3,
+      "distance": 368
+      },
+      {
+      "hole_number": 18,
+      "par": 3,
+      "distance": 219
+      }
+    ]
+    },
+    {
+    "name": "Front 9",
+    "description": null,
+    "total_par": 27,
+    "total_distance": null,
+    "holes": [
+      {
+      "hole_number": 1,
+      "par": 0,
+      "distance": 3
+      },
+      {
+      "hole_number": 2,
+      "par": 0,
+      "distance": 3
+      },
+      {
+      "hole_number": 3,
+      "par": 0,
+      "distance": 3
+      },
+      {
+      "hole_number": 4,
+      "par": 0,
+      "distance": 3
+      },
+      {
+      "hole_number": 5,
+      "par": 0,
+      "distance": 3
+      },
+      {
+      "hole_number": 6,
+      "par": 0,
+      "distance": 3
+      },
+      {
+      "hole_number": 7,
+      "par": 0,
+      "distance": 3
+      },
+      {
+      "hole_number": 8,
+      "par": 0,
+      "distance": 3
+      },
+      {
+      "hole_number": 9,
+      "par": 0,
+      "distance": 3
+      }
+    ]
+    }
+  ]
+}

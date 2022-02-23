@@ -28,3 +28,12 @@
 @mixin nav-shadow() {
   box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.5)
 }
+
+@mixin link-button-style() {
+  background-color: transparent;
+  color: $dark-navy;
+  border: none;
+  border-bottom: 2px solid $dark-navy;
+  width: 50vw;
+  font-size: 20px;
+}

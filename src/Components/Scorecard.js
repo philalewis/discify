@@ -4,11 +4,11 @@ import Player from './Player'
 
 const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
+  const [ currentHole, setCurrentHole ] = useState({})
 
   const currentPlayers = () => {
     const result = {}
     scorecard.players.forEach(player => {
-      // console.log(player)
       result[player.id] = {
         name: player.name,
         id: player.id,
@@ -16,17 +16,20 @@ const Scorecard = () => {
         totalScore: 0
       }
     })
-    console.log(result)
     return result
+  }
+
+  const changeScore = (id, score) => {
+    currentHole.players[id].score = score
+    setCurrentHole(currentHole)
   }
   
   useEffect(() => {
-    setScorecard({...scorecard, currentHole: {
+    setCurrentHole({
       number: 1,
       players: currentPlayers()
-    }})
+    })
   }, [])
-
 
   const displayPlayers = () => {
     return scorecard.players.map(player => {
@@ -35,6 +38,11 @@ const Scorecard = () => {
           name={player.name} 
           key={player.id} 
           id={player.id}
+          par={scorecard.layout.holes.find(hole => {
+            return hole.hole_number === currentHole.number
+          }).par}
+          totalScore={currentHole.players[`${player.id}`].totalScore}
+          changeScore={changeScore}
         />
       )
     })
@@ -42,7 +50,8 @@ const Scorecard = () => {
 
   return (
     <div>
-      { displayPlayers() }
+      <h2>Hole {currentHole.number}</h2>
+      { currentHole.players && displayPlayers() }
       <button>NEXT HOLE</button>
     </div>
   )

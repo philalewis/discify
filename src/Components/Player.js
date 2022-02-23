@@ -1,36 +1,29 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { ScorecardInfo } from '../context'
 
-const Player = ({ name, id }) => {
-  const { scorecard, setScorecard } = useContext(ScorecardInfo)
-// console.log(scorecard.currentHole.players)
-  const handlePlus = () => {
-    // console.log(scorecard.players[id].score)
-    setScorecard(
-      ...scorecard, 
-      // [scorecard.currentHole.players[id].score]: scorecard.currentHole.players[id].score + 1
-    )
+const Player = ({ name, id, totalScore, par, changeScore }) => {
+  const [ score, setScore ] = useState(par)
+
+  const plus = () => {
+    let newScore = score + 1
+    setScore(newScore)
+    changeScore(id, newScore)
   }
 
-  const handleMinus = () => {
-
-  }
-
-  const totalScore = () => {
-    return scorecard.currentHole.players[id] && scorecard.currentHole.players[id].totalScore
+  const minus = () => {
+    let newScore = score <= 1 ? 1 : score - 1
+    setScore(newScore)
+    changeScore(id, newScore)
   }
 
   return (
     <div className="player-score-input" key={id}>
-      <h3>{name}</h3>
-      <p>({totalScore()})</p>
-      <button onClick={event => handleMinus(event)}>-</button>
-      <p>SCORE</p>
-      <button onClick={event => handlePlus(event)}>+</button>
+      <h3>{name} ({totalScore})</h3>
+      <button onClick={minus}>-</button>
+      <p>{score}</p>
+      <button onClick={plus}>+</button>
     </div>
   )
 }
 
 export default Player
-
-// ({scorecard.currentHole.players[id].totalScore})

@@ -19,6 +19,7 @@ const App = () => {
 
   const [ courseInfo, setCourseInfo ] = useState({
     courses: [],
+    searchURL: '',
     currentCourse: {}
   })
 
@@ -29,6 +30,14 @@ const App = () => {
     holes: 18,
     players: [],
     layout: {},
+    currentHole: {
+      number: 0,
+      players: [{
+        id: 1,
+        score: 0,
+        totalScore: 0
+      }]
+    },
     inProgress: false
   })
 

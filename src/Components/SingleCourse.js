@@ -46,7 +46,7 @@ const SingleCourse = () => {
       courseId: course.id,
       layout: layout,
       par: layout.total_par,
-      holes: layout.holes,
+      holes: layout.holes.length,
       players: []
     })
   }
@@ -54,7 +54,7 @@ const SingleCourse = () => {
   return (
     <>
       <h2>{course.name}</h2>
-      <p>{course.location}</p>
+      {/* <p>{course.location}</p> */}
       {course.rating > 0 && <p>{course.rating} /5</p>}
       <p>{course.city}, {course.state}</p>
       <p>Number of Holes: {course.holes}</p>

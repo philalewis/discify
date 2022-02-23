@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { getAllCourses } from '../apiCalls'
+import { getAllCourses, getFilteredCourses } from '../apiCalls'
 import { CourseInfo, Errors } from '../context'
 import Card from './Card'
 import '../Styles/Courses.scss'
@@ -18,7 +18,7 @@ const Courses = () => {
   })
 
   useEffect(() => {
-    getAllCourses()
+    getFilteredCourses(courseInfo.searchURL)
     .then(data =>  {
       setCourseInfo({
         ...courseInfo,
@@ -30,7 +30,6 @@ const Courses = () => {
 
   return (
     <section className='course-card-container'>
-      <h2>IT WORKED!!!!</h2>
       {currentCourses}
     </section>
   )

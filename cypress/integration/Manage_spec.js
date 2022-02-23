@@ -4,10 +4,14 @@ describe('Manage league component', () => {
     cy.intercept('Get', 'https://discify-api.herokuapp.com/api/v1/players',
     { fixture: 'all-players.json'})
 
-    cy.intercept('POST','https://discify-api.herokuapp.com/api/v1/players', { fixture: 'all-players.json'})
+    cy.intercept('Post','https://discify-api.herokuapp.com/api/v1/players', {
+      "id": 1,
+      "name": "Hannah",
+      "average_score": 0,
+      "rounds_played": 0
+    })
 
-    cy.visit('http://localhost:3000')
-      .get('a').eq(1).click()
+    cy.visit('http://localhost:3000/manage/')
   });
 
   it('should be able to add new players to the league', () => {

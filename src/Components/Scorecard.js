@@ -1,42 +1,50 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { ScorecardInfo } from '../context'
+import Player from './Player'
 
 const Scorecard = () => {
-  const [ scores, setScores ] = useState({})
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
-  
-  useEffect(() => {
-    setScorecard({...scorecard, [scorecard.currentHole]: 1})
-    setScores(scorecard.players.map(player => {
-      return {
+
+  const currentPlayers = () => {
+    const result = {}
+    scorecard.players.forEach(player => {
+      // console.log(player)
+      result[player.id] = {
         name: player.name,
         id: player.id,
-        totalScore: 0,
-        score: scorecard.layout.holes[0].par
+        score: 0,
+        totalScore: 0
       }
-    }))
+    })
+    console.log(result)
+    return result
+  }
+  
+  useEffect(() => {
+    setScorecard({...scorecard, currentHole: {
+      number: 1,
+      players: currentPlayers()
+    }})
   }, [])
 
-  // const handlePlus = (event) => {
-  //   event.preventDefault()
-  //   const player = scores.find(player => player.id === event.target.parentNode.key)
-  //   setScores([...scores, [player.score]: player.score += 1])
-  // }
-
-  // const handleMinus = (event) => {
-
-  // }
 
   const displayPlayers = () => {
-    scores.map(player => {
+    return scorecard.players.map(player => {
       return (
-        <Player name={player.name} key={player.id} id={player.id} />
+        <Player
+          name={player.name} 
+          key={player.id} 
+          id={player.id}
+        />
       )
     })
   }
 
   return (
-    {displayPlayers}
+    <div>
+      { displayPlayers() }
+      <button>NEXT HOLE</button>
+    </div>
   )
 }
 

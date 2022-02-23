@@ -18,7 +18,7 @@ const ScorecardForm = () => {
   const handleChange = event => {
     setScorecard({
         ...scorecard, 
-        players: [...scorecard.players, event.value] 
+        players: [...scorecard.players, event.value]
     })
     setPlayers([...players, event.value])
   }

@@ -8,7 +8,7 @@ import '../Styles/Manage.scss'
 const Manage = () => {
   const [nameInput, setNameInput] = useState('')
   const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
-  const [ errorMessage, setErrorMessage ] = useContext(Errors)
+  const { errorMessage, setErrorMessage } = useContext(Errors)
 
   const handleChange = (event) => {
     setNameInput(event.target.value)
@@ -38,7 +38,7 @@ const Manage = () => {
           placeholder='Name'
           value={nameInput}
           onChange={event => handleChange(event)}
-        /> 
+        />
 
         <button className='add-player-btn' onClick={(event) => addPlayer(event)}>ADD</button>
       </form>

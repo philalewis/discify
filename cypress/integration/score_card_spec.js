@@ -14,6 +14,10 @@ describe('Scorecard user flow', () => {
     cy.get('input').type('Phil{enter}')
     cy.get('input').type('Evan{enter}')
       .get('.start-round-btn').click()
+      .get('.minus-btn').eq(0).click()
+      .get('p').contains('2')
+      .get('.plus-btn').eq(1).click()
+      .get('p').contains('4')
   })
 
 })

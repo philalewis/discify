@@ -42,6 +42,7 @@ const SingleCourse = () => {
       }
     })
     setScorecard({
+      ...scorecard, 
       courseName: course.name,
       courseId: course.id,
       layout: layout,

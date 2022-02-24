@@ -1,0 +1,12 @@
+@import './_variables';
+@import './_mixins';
+
+.league-overview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.league-overview-header {
+  font-weight: 900;
+}

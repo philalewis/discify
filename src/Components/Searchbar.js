@@ -4,7 +4,6 @@ import { Link, Route, useNavigate } from 'react-router-dom'
 import Courses from './Courses'
 import '../Styles/Searchbar.scss'
 
-
 const Searchbar = () => {
   const { courseInfo, setCourseInfo } = useContext(CourseInfo)
   const [ inputValue, setInputValue ] = useState('')
@@ -24,10 +23,6 @@ const Searchbar = () => {
     navigate(newURL)
   }
 
-  const searchCourses = () => {
-    updateSearchContext()
-  }
-
   return (
     <div className='search-bar-container'>
       <input
@@ -36,7 +31,7 @@ const Searchbar = () => {
         value={inputValue}
         onChange={event => handleChange(event)}
       />
-      <button className="search-btn" onClick={searchCourses}>SEARCH</button>
+      <button className="search-btn" onClick={updateSearchContext}>SEARCH</button>
     </div>
   )
 }

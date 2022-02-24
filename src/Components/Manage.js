@@ -1,7 +1,8 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {addNewPlayer, getAllPlayers} from '../apiCalls'
-import { LeagueMembers, Errors } from '../context'
+import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
+import { Errors } from '../Contexts/ErrorsProvider'
 import '../Styles/Manage.scss'
 
 

@@ -1,10 +1,11 @@
-import React, {useContext} from 'react'
-import { Errors } from '../context'
+import React, { useContext } from 'react'
+import { Errors } from '../Contexts/ErrorsProvider'
 import '../Styles/ErrorModal.scss'
 
 const ErrorModal = () => {
   const {errorMessage, setErrorMessage} = useContext(Errors)
   console.log(errorMessage);
+  if(errorMessage){
   return (
     <div className='modal'>
       <article className='modal-box'>
@@ -12,7 +13,11 @@ const ErrorModal = () => {
         <button className='modal-btn' onClick={() => setErrorMessage({error: null})}>OK</button>
       </article>
     </div>
-  )
+  )} else {
+    return(
+      <></>
+    )
+  }
 }
 
 export default ErrorModal

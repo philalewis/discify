@@ -26,7 +26,7 @@ export const ScorecardInfoProvider = ({ children }) => {
 
 
     return(
-      <ScorecardInfo.Provider value={ scorecard, setScorecard }>
+      <ScorecardInfo.Provider value={{ scorecard, setScorecard }}>
         {children}
       </ScorecardInfo.Provider>
     )

@@ -1,5 +1,5 @@
-import React, {useContext} from 'react'
-import { Errors } from '../context'
+import React, { useContext } from 'react'
+import { Errors } from '../Contexts/ErrorsProvider'
 import '../Styles/ErrorModal.scss'
 
 const ErrorModal = () => {

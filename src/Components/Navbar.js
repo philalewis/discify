@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/discify-logo.png'
 import DropdownMenu from './DropdownMenu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,7 +10,8 @@ const Navbar = () => {
   const [clicked, setClick] = useState(false)
 
   const toggleClick = () => {
-    setClick(!!clicked)
+    console.log(clicked)
+    setClick(!clicked)
   }
 
   return (
@@ -23,7 +24,7 @@ const Navbar = () => {
       />
       <button
         className='dropdown-button'
-        onClick={() => toggleClick()}>
+        onClick={toggleClick}>
           <FontAwesomeIcon icon={ faBars }/>
       </button>
       </nav>

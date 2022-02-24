@@ -9,16 +9,16 @@ export const LeagueMembersProvider = ({ children }) => {
 
   const [ leagueMembers, setLeagueMembers ] = useState([])
 
-  const getPlayers = () => {
+  useEffect(() => {
     getAllPlayers()
     .then(data => {
       setLeagueMembers(data)
     })
     .catch(error => setErrorMessage(error))
-  }
+  }, [])
 
     return(
-      <LeagueMembers.Provider value={ leagueMembers, setLeagueMembers }>
+      <LeagueMembers.Provider value={{ leagueMembers, setLeagueMembers }}>
         {children}
       </LeagueMembers.Provider>
     )

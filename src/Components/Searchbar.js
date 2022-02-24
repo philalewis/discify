@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { CourseInfo } from '../context'
+import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Link, Route, useNavigate } from 'react-router-dom'
 import Courses from './Courses'
 import '../Styles/Searchbar.scss'
@@ -29,10 +29,10 @@ const Searchbar = () => {
 
   return (
     <div className='search-bar-container'>
-      <input 
-        type="text" 
-        className="search-bar" 
-        value={inputValue} 
+      <input
+        type="text"
+        className="search-bar"
+        value={inputValue}
         onChange={event => handleChange(event)}
       />
       <button className="search-btn" onClick={searchCourses}>SEARCH</button>

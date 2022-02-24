@@ -7,7 +7,7 @@ export const ErrorsProvider = ({ children }) => {
     const [ errorMessage, setErrorMessage ] = useState(null)
 
     return(
-      <Errors.Provider value={ errorMessage, setErrorMessage }>
+      <Errors.Provider value={( errorMessage, setErrorMessage )}>
         {children}
       </Errors.Provider>
     )

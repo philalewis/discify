@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllCourses, getFilteredCourses } from '../apiCalls'
-import { CourseInfo, Errors } from '../context'
+import { CourseInfo } from '../Contexts/CourseInfoProvider'
+import { Errors } from '../Contexts/ErrorsProvider'
 import Card from './Card'
 import '../Styles/Courses.scss'
 

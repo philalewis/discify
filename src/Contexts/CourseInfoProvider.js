@@ -11,7 +11,7 @@ export const CourseInfoProvider = ({ children }) => {
     })
 
     return(
-      <CourseInfo.Provider value={ courseInfo, setCourseInfo }>
+      <CourseInfo.Provider value={{ courseInfo, setCourseInfo }}>
         {children}
       </CourseInfo.Provider>
     )

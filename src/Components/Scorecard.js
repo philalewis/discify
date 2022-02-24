@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { ScorecardInfo, Errors } from '../context'
+import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
+import { Errors } from '../Contexts/ErrorsProvider'
 import Player from './Player'
 import { scoreAHole, endRound } from '../apiCalls'
 import {useNavigate} from 'react-router-dom'
@@ -31,7 +32,6 @@ const Scorecard = () => {
   }
 
   useEffect(() => {
-    console.log('useEffect fired');
     setCurrentHole({
       number: 1,
       players: currentPlayers(),
@@ -73,7 +73,7 @@ const Scorecard = () => {
   const updatePlayerScores = (prevHoleScores) => {
     const updatedPlayers = {}
     prevHoleScores.forEach(player => {
-      updatedPlayers[player.player_id] = { 
+      updatedPlayers[player.player_id] = {
         name: currentHole.players[player.player_id].name,
         id: currentHole.players[player.player_id].id,
         score: 0,
@@ -87,11 +87,11 @@ const Scorecard = () => {
     const currentPlayers = Object.keys(currentHole.players)
     const playerScores = currentPlayers.map(player_id => {
       return {
-        player_id: currentHole.players[player_id].id, 
+        player_id: currentHole.players[player_id].id,
         strokes: currentHole.players[player_id].score
       }
     })
-    
+
     const body = {
       hole: {
         hole_number: currentHole.number,
@@ -107,11 +107,11 @@ const Scorecard = () => {
     const currentPlayers = Object.keys(currentHole.players)
     const playerScores = currentPlayers.map(player_id => {
       return {
-        player_id: currentHole.players[player_id].id, 
+        player_id: currentHole.players[player_id].id,
         strokes: currentHole.players[player_id].score
       }
     })
-    
+
     const body = {
       hole: {
         hole_number: currentHole.number,
@@ -136,7 +136,7 @@ const Scorecard = () => {
   }
 
   const checkLastHole = () => {
-    return inProgress ? 
+    return inProgress ?
       <button className='next-hole-btn' onClick={postHoleScores}>NEXT HOLE</button> :
       <button className='end-round-btn' onClick={postFinalScores}>END ROUND</button>
   }

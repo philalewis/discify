@@ -16,15 +16,16 @@ const Searchbar = () => {
   }
 
   const updateSearchContext = () => {
+    let newURL = !inputValue ? '/courses' : `/courses?name=${inputValue}`
     setCourseInfo({
       ...courseInfo,
-      searchURL: !inputValue ? '/courses' : `/courses?name=${inputValue}`
+      searchURL: newURL
     })
+    navigate(newURL)
   }
 
   const searchCourses = () => {
     updateSearchContext()
-    navigate(courseInfo.searchURL)
   }
 
   return (

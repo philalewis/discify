@@ -4,7 +4,7 @@ import '../Styles/ErrorModal.scss'
 
 const ErrorModal = () => {
   const {errorMessage, setErrorMessage} = useContext(Errors)
-
+  console.log(errorMessage);
   return (
     <div className='modal'>
       <article className='modal-box'>

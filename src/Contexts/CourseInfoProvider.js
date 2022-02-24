@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react'
 
-const CourseInfo = createContext()
+export const CourseInfo = createContext()
 
-const CourseInfoProvider = () => {
+export const CourseInfoProvider = ({ children }) => {
 
     const [ courseInfo, setCourseInfo ] = useState({
       courses: [],
@@ -11,10 +11,8 @@ const CourseInfoProvider = () => {
     })
 
     return(
-      <CourseInfo.Provider value={value}>
+      <CourseInfo.Provider value={ courseInfo, setCourseInfo }>
         {children}
       </CourseInfo.Provider>
     )
 }
-
-export default CourseInfoProvider

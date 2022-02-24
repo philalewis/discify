@@ -1,16 +1,25 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect, useContext } from 'react'
+import { getAllPlayers } from '../apiCalls'
+import { Errors } from './ErrorsProvider'
 
-const LeagueMembers = createContext()
+export const LeagueMembers = createContext()
 
-const LeagueMembersProvider = () => {
+export const LeagueMembersProvider = ({ children }) => {
+  const { errorMessage, setErrorMessage } = useContext(Errors)
 
   const [ leagueMembers, setLeagueMembers ] = useState([])
 
+  const getPlayers = () => {
+    getAllPlayers()
+    .then(data => {
+      setLeagueMembers(data)
+    })
+    .catch(error => setErrorMessage(error))
+  }
+
     return(
-      <LeagueMembers.Provider value={value}>
+      <LeagueMembers.Provider value={ leagueMembers, setLeagueMembers }>
         {children}
       </LeagueMembers.Provider>
     )
 }
-
-export default LeagueMembersProvider

@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react'
 
-const ScorecardInfo = createContext()
+export const ScorecardInfo = createContext()
 
-const ScorecardInfoProvider = () => {
+export const ScorecardInfoProvider = ({ children }) => {
 
   const [ scorecard, setScorecard ] = useState({
     courseName: 'West Fork',
@@ -26,10 +26,8 @@ const ScorecardInfoProvider = () => {
 
 
     return(
-      <ScorecardInfo.Provider value={value}>
+      <ScorecardInfo.Provider value={ scorecard, setScorecard }>
         {children}
       </ScorecardInfo.Provider>
     )
 }
-
-export default ScorecardInfoProvider

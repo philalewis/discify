@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
 import './Styles/App.scss';
-import LeagueMembersProvider from './Contexts/LeagueMembersProvider'
-import CourseInfoProvider from './Contexts/CourseInfoProvider'
-import ErrorsProvider from './Contexts/ErrorsProvider'
-import ScorecardInfoProvider from './Contexts/ScorecardInfoProvider'
-import { CourseInfo, ScorecardInfo, LeagueMembers, Errors } from './context'
+import { LeagueMembersProvider, LeagueMembers } from './Contexts/LeagueMembersProvider'
+import { CourseInfoProvider, CourseInfo } from './Contexts/CourseInfoProvider'
+import { ErrorsProvider, Errors } from './Contexts/ErrorsProvider'
+import { ScorecardInfoProvider, ScorecardInfo } from './Contexts/ScorecardInfoProvider'
 import Navbar from './Components/Navbar'
 import DropdownMenu from './Components/DropdownMenu'
 import Manage from './Components/Manage'
@@ -16,17 +15,9 @@ import Courses from './Components/Courses'
 import ErrorModal from './Components/ErrorModal'
 import SingleCourse from './Components/SingleCourse'
 import ScorecardForm from './Components/ScorecardForm'
-import { getAllPlayers } from './apiCalls'
+
 
 const App = () => {
-
-  useEffect(() => {
-    getAllPlayers()
-    .then(data => {
-      setLeagueMembers(data)
-    })
-    .catch(error => setErrorMessage(error))
-  }, [])
 
   return (
     <main>
@@ -35,7 +26,7 @@ const App = () => {
           <ScorecardInfoProvider>
             <LeagueMembersProvider>
               <Navbar />
-              {errorMessage && <ErrorModal />}
+              <ErrorModal />
               <Routes>
                 <Route exact path='/' element={<Home />} />
                 <Route exact path='/manage/' element={<Manage />} />

@@ -3,7 +3,9 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
 import './Styles/App.scss';
 import LeagueMembersProvider from './Contexts/LeagueMembersProvider'
-import CourseInfoProvider from './Contextx/CourseInfoProvider'
+import CourseInfoProvider from './Contexts/CourseInfoProvider'
+import ErrorsProvider from './Contexts/ErrorsProvider'
+import ScorecardInfoProvider from './Contexts/ScorecardInfoProvider'
 import { CourseInfo, ScorecardInfo, LeagueMembers, Errors } from './context'
 import Navbar from './Components/Navbar'
 import DropdownMenu from './Components/DropdownMenu'
@@ -18,38 +20,6 @@ import { getAllPlayers } from './apiCalls'
 
 const App = () => {
 
-  const [ errorMessage, setErrorMessage ] = useState(null)
-  const [clicked, setClick] = useState(false)
-
-
-  const [ scorecard, setScorecard ] = useState({
-    courseName: 'West Fork',
-    courseId: null,
-    roundId: null,
-    par: 54,
-    holes: 18,
-    players: [],
-    layout: {},
-    currentHole: {
-      number: 0,
-      players: [{
-        id: 1,
-        score: 0,
-        totalScore: 0
-      }]
-    },
-    inProgress: false, 
-    final: {}
-  })
-
-  const toggleClick = () => {
-    if(!clicked){
-      setClick(true)
-    } else {
-      setClick(false)
-    }
-  }
-
   useEffect(() => {
     getAllPlayers()
     .then(data => {
@@ -61,11 +31,10 @@ const App = () => {
   return (
     <main>
       <CourseInfoProvider>
-        <ScorecardInfo.Provider value={{ scorecard, setScorecard }}>
-          <LeagueMembersProvider>
-            <Errors.Provider value={{ errorMessage, setErrorMessage }}>
-              <Navbar toggleClick={toggleClick}/>
-              {clicked && <DropdownMenu />}
+        <ErrorsProvider>
+          <ScorecardInfoProvider>
+            <LeagueMembersProvider>
+              <Navbar />
               {errorMessage && <ErrorModal />}
               <Routes>
                 <Route exact path='/' element={<Home />} />
@@ -76,9 +45,9 @@ const App = () => {
                 <Route path='/courses/' element={<Courses />} />
                 <Route exact path='/course/:id' element={<SingleCourse />} />
               </Routes>
-            </Errors.Provider>
-          </LeagueMembersProvider>
-        </ScorecardInfo.Provider>
+            </LeagueMembersProvider>
+          </ScorecardInfoProvider>
+        </ErrorsProvider>
       </CourseInfoProvider>
     </main>
   );

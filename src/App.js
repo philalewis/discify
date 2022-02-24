@@ -39,7 +39,8 @@ const App = () => {
         totalScore: 0
       }]
     },
-    inProgress: false
+    inProgress: false, 
+    final: {}
   })
 
   useEffect(() => {

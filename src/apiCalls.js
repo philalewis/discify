@@ -65,3 +65,13 @@ export const scoreAHole = (body, id) => {
   })
   .then(response => handleError(response))
 }
+
+export const endRound = (id) => {
+  return fetch(`https://discify-api.herokuapp.com/api/v1/rounds/${id}/end_round`, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => handleError(response))
+} 

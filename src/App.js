@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
 import './Styles/App.scss';
+import LeagueMembersProvider from './Contexts/LeagueMembersProvider'
+import CourseInfoProvider from './Contextx/CourseInfoProvider'
 import { CourseInfo, ScorecardInfo, LeagueMembers, Errors } from './context'
 import Navbar from './Components/Navbar'
 import DropdownMenu from './Components/DropdownMenu'
@@ -15,15 +17,10 @@ import ScorecardForm from './Components/ScorecardForm'
 import { getAllPlayers } from './apiCalls'
 
 const App = () => {
-  const [ leagueMembers, setLeagueMembers ] = useState([])
+
   const [ errorMessage, setErrorMessage ] = useState(null)
   const [clicked, setClick] = useState(false)
 
-  const [ courseInfo, setCourseInfo ] = useState({
-    courses: [],
-    searchURL: '',
-    currentCourse: {}
-  })
 
   const [ scorecard, setScorecard ] = useState({
     courseName: 'West Fork',
@@ -61,9 +58,9 @@ const App = () => {
 
   return (
     <main>
-      <CourseInfo.Provider value={{ courseInfo, setCourseInfo }}>
+      <CourseInfoProvider>
         <ScorecardInfo.Provider value={{ scorecard, setScorecard }}>
-          <LeagueMembers.Provider value={{ leagueMembers, setLeagueMembers }}>
+          <LeagueMembersProvider>
             <Errors.Provider value={{ errorMessage, setErrorMessage }}>
               <Navbar toggleClick={toggleClick}/>
               {clicked && <DropdownMenu />}
@@ -78,9 +75,9 @@ const App = () => {
                 <Route exact path='/course/:id' element={<SingleCourse />} />
               </Routes>
             </Errors.Provider>
-          </LeagueMembers.Provider>
+          </LeagueMembersProvider>
         </ScorecardInfo.Provider>
-      </CourseInfo.Provider>
+      </CourseInfoProvider>
     </main>
   );
 }

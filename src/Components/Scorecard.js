@@ -1,12 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { ScorecardInfo, Errors } from '../context'
 import Player from './Player'
-import { scoreAHole } from '../apiCalls'
+import { scoreAHole, endRound } from '../apiCalls'
+import {useNavigate} from 'react-router-dom'
 
 const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
   const [ currentHole, setCurrentHole ] = useState({})
   const {errorMessage, setErrorMessage} = useContext(Errors)
+  const [inProgress, setInProgress] = useState(true)
+  const navigate = useNavigate()
+
 
   const currentPlayers = () => {
     const result = {}
@@ -23,12 +27,11 @@ const Scorecard = () => {
 
   const changeScore = (id, score) => {
     currentHole.players[id].score = score
-    console.log(currentHole.players[id].score);
     setCurrentHole(currentHole)
   }
 
   useEffect(() => {
-    console.log(scorecard.layout.holes);
+    console.log('useEffect fired');
     setCurrentHole({
       number: 1,
       players: currentPlayers(),
@@ -56,6 +59,9 @@ const Scorecard = () => {
 
   const nextHole = (prevHoleScores) => {
     const hole = scorecard.layout.holes.find(hole => hole.hole_number === currentHole.number + 1)
+    if(hole.hole_number === scorecard.layout.holes.length){
+      setInProgress(false)
+    }
     setCurrentHole({
       number: hole.hole_number,
       players: updatePlayerScores(prevHoleScores),
@@ -78,10 +84,8 @@ const Scorecard = () => {
   }
 
   const postHoleScores = () => {
-    // console.log(currentHole.players);
     const currentPlayers = Object.keys(currentHole.players)
     const playerScores = currentPlayers.map(player_id => {
-    console.log(currentHole.players[player_id]);
       return {
         player_id: currentHole.players[player_id].id, 
         strokes: currentHole.players[player_id].score
@@ -99,11 +103,49 @@ const Scorecard = () => {
     .catch(error => setErrorMessage(error))
   }
 
+  const postFinalScores = () => {
+    const currentPlayers = Object.keys(currentHole.players)
+    const playerScores = currentPlayers.map(player_id => {
+      return {
+        player_id: currentHole.players[player_id].id, 
+        strokes: currentHole.players[player_id].score
+      }
+    })
+    
+    const body = {
+      hole: {
+        hole_number: currentHole.number,
+        player_scores: playerScores
+      }
+    }
+    scoreAHole(body, scorecard.roundId)
+    .then(() =>  endCurrentRound())
+    .catch(error => setErrorMessage(error))
+  }
+
+  const endCurrentRound = () => {
+    endRound(scorecard.roundId)
+    .then(data => {
+      setScorecard({
+        ...scorecard,
+        final: data
+      })
+      navigate('/round-overview')
+    })
+    .catch(error => setErrorMessage(error))
+  }
+
+  const checkLastHole = () => {
+    return inProgress ? 
+      <button className='next-hole-btn' onClick={postHoleScores}>NEXT HOLE</button> :
+      <button className='end-round-btn' onClick={postFinalScores}>END ROUND</button>
+  }
+
   return (
     <div>
       <h2>Hole {currentHole.number}</h2>
       { currentHole.players && displayPlayers() }
-      <button className='next-hole-btn' onClick={postHoleScores}>NEXT HOLE</button>
+      {checkLastHole()}
     </div>
   )
 }

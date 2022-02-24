@@ -25,9 +25,6 @@ const Searchbar = () => {
   const searchCourses = () => {
     updateSearchContext()
     navigate(courseInfo.searchURL)
-    // !inputValue ?
-    //   navigate('/courses') :
-    //   navigate(`/courses?name=${inputValue}`)
   }
 
   return (

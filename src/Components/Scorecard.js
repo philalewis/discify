@@ -12,7 +12,6 @@ const Scorecard = () => {
   const [inProgress, setInProgress] = useState(true)
   const navigate = useNavigate()
 
-
   const currentPlayers = () => {
     const result = {}
     scorecard.players.forEach(player => {

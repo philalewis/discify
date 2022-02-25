@@ -4,6 +4,7 @@ describe('Search courses fuctionality', () => {
       cy.visit('http://localhost:3000')
 
       cy.get('.search-btn').click()
+        .get('.course-card').first().click()
   })
 
   it('Should filter and display specified courses', () => {
@@ -11,8 +12,6 @@ describe('Search courses fuctionality', () => {
 
       cy.get('.search-bar').type('west')
         .get('.search-btn').click()
-
-  // cy.get('.course-card')
-    // .contains('west')
+      cy.get('.card-name').first().contains('Westminster')
   })
 })

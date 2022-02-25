@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
+import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 
 const RoundOverview = () => {
   const location = useLocation()
+  const { leagueMembers, setLeagueMembers} = useContext(LeagueMembers)
   const sortPlayers = () => {
     location.state.scores.sort((a, b) => a.total_score - b.total_score)
+  }
+
+  const findPlayerName = (id) => {
+    return leagueMembers.find(member => member.id === id).name
   }
 
   const playerInfo = () => {
     sortPlayers()
     return location.state.scores.map(player => {
       return (
-        <div>
-          <h3>{player.name}</h3>
+        <div key={player.player_id}>
+          <h3>{findPlayerName(parseInt(player.player_id))}</h3>
           <p>{player.total_score}</p>
           <p>({player.score})</p>
         </div>

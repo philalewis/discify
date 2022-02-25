@@ -23,13 +23,6 @@ const Scorecard = () => {
       distance: courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === 1).distance
     })
   }, []) 
-    // setScorecard(scorecard.map(player => {
-    //   return {
-    //     ...player,
-    //     score: 0
-    //   }
-    // }))
-  // }, [])
   
   const displayPlayers = () => {
     scorecard.sort((a,b) => a.id - b.id)
@@ -63,22 +56,9 @@ const Scorecard = () => {
       <button className='end-round-btn' onClick={postHoleScores}>END ROUND</button>
   }
 
-  // const currentPlayers = () => {
-  //   const result = {}
-  //   scorecard.players.forEach(player => {
-  //     result[player.id] = {
-  //       name: player.name,
-  //       id: player.id,
-  //       score: scorecard.layout.holes[0].par,
-  //       totalScore: 0
-  //     }
-  //   })
-  //   return result
-  // }
-
   const changeScore = (id, score) => {
     let player = scorecard.find(player => player.id === id)
-    console.log(player);
+
     player.score = score
     const otherPlayers = scorecard.filter(player => player.id !== id)
     setScorecard([...otherPlayers, player])
@@ -97,19 +77,6 @@ const Scorecard = () => {
     })
   }
 
-  // const updatePlayerScores = (prevHoleScores) => {
-  //   const updatedPlayers = {}
-  //   prevHoleScores.forEach(player => {
-  //     updatedPlayers[player.player_id] = {
-  //       name: currentHole.players[player.player_id].name,
-  //       id: currentHole.players[player.player_id].id,
-  //       score: 0,
-  //       totalScore: player.score + currentHole.players[player.player_id].totalScore
-  //     }
-  //   })
-  //   return updatedPlayers
-  // }
-
   const postHoleScores = () => {
     const body = {
       hole: {
@@ -117,7 +84,9 @@ const Scorecard = () => {
         player_scores: scorecard.map(player => {
           return {
             player_id: player.id,
-            strokes: player.score
+            strokes: player.score === 0 ? 
+              currentHole.par : 
+              player.score
           }
         })
       }
@@ -132,7 +101,7 @@ const Scorecard = () => {
 
   const endCurrentRound = () => {
     endRound(courseInfo.roundId)
-    .then(data => navigate('/round-overview', data))
+    .then(data => navigate('/round-overview', {state: data}))
     .catch(error => setErrorMessage(error))
   }
 

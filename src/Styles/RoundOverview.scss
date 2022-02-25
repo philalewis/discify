@@ -1,0 +1,11 @@
+@import './_variables';
+@import './_mixins';
+
+.round-players-container {
+    @include white-container();
+}
+
+.player-line-container {
+  display: flex;
+  justify-content: space-around;
+}

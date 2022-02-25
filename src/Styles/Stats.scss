@@ -1,0 +1,10 @@
+@import './_variables';
+@import './_mixins';
+
+.stats-container {
+  @include white-container();
+}
+
+.stats-header {
+  text-align: center;
+}

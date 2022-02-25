@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
+import '../Styles/Player.scss'
 
 const Player = ({ name, id, totalScore, par, changeScore }) => {
   const [ score, setScore ] = useState(par)

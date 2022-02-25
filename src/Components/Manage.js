@@ -35,6 +35,7 @@ const Manage = () => {
     <>
       <form>
         <input
+          className='member-input'
           type='text'
           placeholder='Name'
           value={nameInput}
@@ -43,8 +44,10 @@ const Manage = () => {
 
         <button className='add-player-btn' onClick={(event) => addPlayer(event)}>ADD</button>
       </form>
-      { playerNames }
-      <Link to='/'> <button className='home-btn'>DONE</button> </Link>
+      <div className='manage-players-container'>
+        { playerNames }
+        <Link to='/'> <button className='home-btn'>DONE</button> </Link>
+      </div>
     </>
   )
 }

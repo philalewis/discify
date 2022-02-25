@@ -5,6 +5,7 @@ import { Errors } from '../Contexts/ErrorsProvider'
 import Player from './Player'
 import { scoreAHole, endRound } from '../apiCalls'
 import {useNavigate} from 'react-router-dom'
+import '../Styles/Scorecard.scss'
 
 const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
@@ -14,16 +15,16 @@ const Scorecard = () => {
   const [scores, setScores] = useState([])
   const {courseInfo, setCourseInfo} = useContext(CourseInfo)
   const navigate = useNavigate()
-  
-  
+
+
   useEffect(() => {
     setCurrentHole({
       number: 1,
       par: courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === 1).par,
       distance: courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === 1).distance
     })
-  }, []) 
-  
+  }, [])
+
   const displayPlayers = () => {
     scorecard.sort((a,b) => a.id - b.id)
     return scorecard.map(player => {
@@ -43,7 +44,7 @@ const Scorecard = () => {
   }
 
   const findTotalScore = (id) => {
-    let playerScores = scores.filter(score => score.player_id === id) 
+    let playerScores = scores.filter(score => score.player_id === id)
       return playerScores.length > 0 ? playerScores.reduce((acc, player) => {
         acc += player.score
         return acc
@@ -84,8 +85,8 @@ const Scorecard = () => {
         player_scores: scorecard.map(player => {
           return {
             player_id: player.id,
-            strokes: player.score === 0 ? 
-              currentHole.par : 
+            strokes: player.score === 0 ?
+              currentHole.par :
               player.score
           }
         })
@@ -107,9 +108,11 @@ const Scorecard = () => {
 
   return (
     <div>
-      <h2>Hole {currentHole.number}</h2>
-      { scorecard.length && displayPlayers() }
-      {checkLastHole()}
+      <h2 className='hole-number'>Hole {currentHole.number}</h2>
+      <div className='player-score-container'>
+        { scorecard.length && displayPlayers() }
+        {checkLastHole()}
+      </div>
     </div>
   )
 }

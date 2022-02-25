@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from 'react'
 import Select from 'react-select'
 import { useLocation, Link } from 'react-router-dom'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
-import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
 import { getSingleCourse } from '../apiCalls'
 
 const SingleCourse = () => {
@@ -13,7 +12,6 @@ const SingleCourse = () => {
   const [ course, setCourse ] = useState({})
   const [ layout, setLayout ] = useState({})
   const {courseInfo, setCourseInfo} = useContext(CourseInfo)
-  const { scorecard, setScorecard } = useContext(ScorecardInfo)
 
   useEffect(() => {
     getSingleCourse(id)
@@ -38,18 +36,7 @@ const SingleCourse = () => {
   const handleClick = () => {
     setCourseInfo({
       ...courseInfo,
-      currentCourse: {
-        course: {...course, layout: layout}
-      }
-    })
-    setScorecard({
-      ...scorecard,
-      courseName: course.name,
-      courseId: course.id,
-      layout: layout,
-      par: layout.total_par,
-      holes: layout.holes.length,
-      players: []
+      currentCourse: {...course, layout: layout}
     })
   }
 

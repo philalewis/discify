@@ -4,14 +4,15 @@ import Select from 'react-select'
 import { startRound } from '../apiCalls'
 import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
+import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors, ErrorsProvider } from '../Contexts/ErrorsProvider'
 
 
 const ScorecardForm = () => {
-  const [ players, setPlayers ] = useState([])
   const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
   const {errorMessage, setErrorMessage} = useContext(Errors)
+  const {courseInfo, setCourseInfo} = useContext(CourseInfo)
 
   const options = leagueMembers.map(member => {
     return {
@@ -21,33 +22,25 @@ const ScorecardForm = () => {
   })
 
   const handleChange = event => {
-    setScorecard({
-        ...scorecard,
-        players: [...scorecard.players, event.value]
-    })
-    setPlayers([...players, event.value])
+    setScorecard([...scorecard, {
+      ...event.value,
+      score: 0,
+      totalScore: 0
+    }])
   }
 
-  const playerNames = players.length > 0 ?
-    players.map(player => <p key={player.id}>{player.name}</p>) :
+  const playerNames = scorecard.length > 0 ?
+    scorecard.map(player => <p key={player.id}>{player.name}</p>) :
     null
-
-  const handleClick = () => {
-    setScorecard({
-      ...scorecard,
-      inProgress: true
-    })
-    beginRound()
-  }
 
   const beginRound = () => {
     const roundData = {
-      course_id: scorecard.courseId,
-      layout_id: scorecard.layout.id,
-      player_ids: scorecard.players.map(player => player.id)
+      course_id: courseInfo.currentCourse.id,
+      layout_id: courseInfo.currentCourse.layout.id,
+      player_ids: scorecard.map(player => player.id)
     }
     startRound(roundData)
-      .then(data => setScorecard({...scorecard, roundId: data.id}))
+      .then(data => setCourseInfo({...courseInfo, roundId: data.id}))
       .catch(error => setErrorMessage(error))
   }
 
@@ -56,7 +49,7 @@ const ScorecardForm = () => {
       <h2>Choose Players</h2>
       <Select options={options} onChange={event => handleChange(event)}/>
       {playerNames}
-      <Link to='/scorecard/' className='start-round-btn' onClick={handleClick}>START ROUND</Link>
+      <Link to='/scorecard/' className='start-round-btn' onClick={beginRound}>START ROUND</Link>
     </>
   )
 }

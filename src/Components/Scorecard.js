@@ -22,9 +22,17 @@ const Scorecard = () => {
       par: courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === 1).par,
       distance: courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === 1).distance
     })
-  }, [])
+  }, []) 
+    // setScorecard(scorecard.map(player => {
+    //   return {
+    //     ...player,
+    //     score: 0
+    //   }
+    // }))
+  // }, [])
   
   const displayPlayers = () => {
+    scorecard.sort((a,b) => a.id - b.id)
     return scorecard.map(player => {
       return (
         <Player
@@ -55,23 +63,25 @@ const Scorecard = () => {
       <button className='end-round-btn' onClick={postHoleScores}>END ROUND</button>
   }
 
-  const currentPlayers = () => {
-    const result = {}
-    scorecard.players.forEach(player => {
-      result[player.id] = {
-        name: player.name,
-        id: player.id,
-        score: scorecard.layout.holes[0].par,
-        totalScore: 0
-      }
-    })
-    return result
-  }
+  // const currentPlayers = () => {
+  //   const result = {}
+  //   scorecard.players.forEach(player => {
+  //     result[player.id] = {
+  //       name: player.name,
+  //       id: player.id,
+  //       score: scorecard.layout.holes[0].par,
+  //       totalScore: 0
+  //     }
+  //   })
+  //   return result
+  // }
 
   const changeScore = (id, score) => {
-    const player = scorecard.find(player => player.id === id)
+    let player = scorecard.find(player => player.id === id)
+    console.log(player);
     player.score = score
-    setScorecard([...scorecard, player])
+    const otherPlayers = scorecard.filter(player => player.id !== id)
+    setScorecard([...otherPlayers, player])
     setCurrentHole(currentHole)
   }
 
@@ -107,12 +117,12 @@ const Scorecard = () => {
         player_scores: scorecard.map(player => {
           return {
             player_id: player.id,
-            strokes: player.strokes
+            strokes: player.score
           }
         })
       }
     }
-    scoreAHole(body, courseInfo.currentCourse.roundId)
+    scoreAHole(body, courseInfo.roundId)
     .then(data => {
       setScores(data.scores)
       inProgress ? nextHole() : endCurrentRound()

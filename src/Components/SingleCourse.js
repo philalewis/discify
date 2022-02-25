@@ -3,6 +3,7 @@ import Select from 'react-select'
 import { useLocation, Link } from 'react-router-dom'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { getSingleCourse } from '../apiCalls'
+import '../Styles/SingleCourse.scss'
 
 const SingleCourse = () => {
   const location = useLocation()

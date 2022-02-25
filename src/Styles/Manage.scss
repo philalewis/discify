@@ -4,3 +4,21 @@
 .home-btn {
   @include button-style()
 }
+
+.member-input {
+  padding-left: 3%;
+  width: 70%;
+  height: 5vh;
+  margin: 3%;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.35);
+}
+
+.add-player-btn {
+  @include button-style();
+}
+
+.manage-players-container {
+  @include white-container();
+}

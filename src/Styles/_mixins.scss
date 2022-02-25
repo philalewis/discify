@@ -7,7 +7,17 @@
   border-radius: 5px;
   border: none;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2)
+}
 
+@mixin navy-button() {
+  background-color: $dark-navy;
+  color: $white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2)
 }
 
 @mixin button-hover() {
@@ -36,4 +46,13 @@
   border-bottom: 2px solid $dark-navy;
   width: 50vw;
   font-size: 20px;
+}
+
+@mixin white-container() {
+  @include card-shadow()
+  background-color: $white;
+  margin: 5%;
+  border-radius: 6px;
+  min-height: 44vh;
+  padding: 7%;
 }

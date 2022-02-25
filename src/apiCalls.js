@@ -44,10 +44,10 @@ export const getSingleCourse = (id) => {
 
 export const startRound = (roundData) => {
   return fetch('https://discify-api.herokuapp.com/api/v1/rounds', {
-    method: 'POST', 
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-    }, 
+    },
     body: JSON.stringify({
       round: roundData
     })
@@ -57,7 +57,7 @@ export const startRound = (roundData) => {
 
 export const scoreAHole = (body, id) => {
   return fetch(`https://discify-api.herokuapp.com/api/v1/rounds/${id}/score_hole`, {
-    method: 'POST', 
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -68,10 +68,10 @@ export const scoreAHole = (body, id) => {
 
 export const endRound = (id) => {
   return fetch(`https://discify-api.herokuapp.com/api/v1/rounds/${id}/end_round`, {
-    method: 'POST', 
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     }
   })
   .then(response => handleError(response))
-} 
+}

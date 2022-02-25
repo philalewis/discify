@@ -1,0 +1,13 @@
+@import './_variables';
+@import './_mixins';
+
+.minus-btn,
+.plus-btn {
+  @include navy-button();
+}
+
+.player-score-input {
+  display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

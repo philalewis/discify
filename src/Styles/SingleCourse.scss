@@ -1,0 +1,6 @@
+@import './_variables';
+@import './_mixins';
+
+.choose-course-btn {
+  @include button-style()
+}

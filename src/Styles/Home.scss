@@ -1,0 +1,15 @@
+@import './_variables';
+@import './_mixins';
+
+.members-container {
+  @include white-container();
+}
+
+.home-header {
+  margin: 5%;
+  border-bottom: 4px solid $orange;
+  padding-bottom: 2%;
+  text-align: center;
+  font-weight: 500;
+  font-size: 38px;
+}

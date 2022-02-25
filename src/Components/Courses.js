@@ -1,14 +1,16 @@
 import React, { useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { getAllCourses, getFilteredCourses } from '../apiCalls'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import Card from './Card'
+import Searchbar from './Searchbar'
 import '../Styles/Courses.scss'
 
 const Courses = () => {
   const { courseInfo, setCourseInfo } = useContext(CourseInfo)
   const { errorMessage, setErrorMessage } = useContext(Errors)
+  const location = useLocation()
 
   const currentCourses = courseInfo.courses.map(course => {
     return (
@@ -19,18 +21,21 @@ const Courses = () => {
   })
 
   useEffect(() => {
-    getFilteredCourses(courseInfo.searchURL)
-    .then(data =>  {
+    const searchURL = location.state
+    console.log(searchURL)
+    getFilteredCourses(searchURL)
+    .then(data => {
       setCourseInfo({
         ...courseInfo,
         courses: data
       })
     })
     .catch(error => setErrorMessage(error))
-  }, [])
+  }, [location.state])
 
   return (
     <section className='course-card-container'>
+      <Searchbar />
       {currentCourses}
     </section>
   )

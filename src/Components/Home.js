@@ -1,4 +1,4 @@
-import React, { useContext, useState , useEffect } from 'react'
+import React, { useContext } from 'react'
 import { LeagueMembers, LeagueMembersProvider } from '../Contexts/LeagueMembersProvider'
 import Searchbar from './Searchbar'
 import '../Styles/Home.scss'

@@ -1,12 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { CourseInfo } from '../Contexts/CourseInfoProvider'
-import { Link, Route, useNavigate } from 'react-router-dom'
-import Courses from './Courses'
+import { useNavigate } from 'react-router-dom'
 import '../Styles/Searchbar.scss'
 
 
 const Searchbar = () => {
-  const { courseInfo, setCourseInfo } = useContext(CourseInfo)
   const [ inputValue, setInputValue ] = useState('')
 
   const navigate = useNavigate()
@@ -17,15 +14,7 @@ const Searchbar = () => {
 
   const updateSearchContext = () => {
     let newURL = !inputValue ? '/courses' : `/courses?name=${inputValue}`
-    setCourseInfo({
-      ...courseInfo,
-      searchURL: newURL
-    })
-    navigate(newURL)
-  }
-
-  const searchCourses = () => {
-    updateSearchContext()
+    navigate(newURL, {state: newURL})
   }
 
   return (
@@ -36,7 +25,7 @@ const Searchbar = () => {
         value={inputValue}
         onChange={event => handleChange(event)}
       />
-      <button className="search-btn" onClick={searchCourses}>SEARCH</button>
+      <button className="search-btn" onClick={updateSearchContext}>SEARCH</button>
     </div>
   )
 }

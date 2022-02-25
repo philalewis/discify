@@ -4,7 +4,7 @@ import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import Player from './Player'
 import { scoreAHole, endRound } from '../apiCalls'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import '../Styles/Scorecard.scss'
 import CourseHeader from './CourseHeader'
 
@@ -83,6 +83,7 @@ const Scorecard = () => {
     //   }
     // })
     // setScorecard(resetScores)
+    // console.log(scorecard)
   }
 
   const postHoleScores = () => {
@@ -113,7 +114,15 @@ const Scorecard = () => {
     .catch(error => setErrorMessage(error))
   }
 
+  // const nothingHere = (
+  //   <div>
+  //     <h3>Sorry, there's nothing on this page.</h3>
+  //     <Link to='/'><button className="go-home">OKAY</button></Link>
+  //   </div>
+  // )
+
   return (
+    // {!courseInfo.roundId ? {nothingHere} :
     <div>
       <CourseHeader
         name={courseInfo.currentCourse.name}

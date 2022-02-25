@@ -10,7 +10,6 @@ const Navbar = () => {
   const [clicked, setClick] = useState(false)
 
   const toggleClick = () => {
-    console.log(clicked)
     setClick(!clicked)
   }
 

@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
+import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import '../Styles/RoundOverview.scss'
+import CourseHeader from './CourseHeader'
 
 const RoundOverview = () => {
   const location = useLocation()
@@ -9,6 +11,7 @@ const RoundOverview = () => {
   const sortPlayers = () => {
     location.state.scores.sort((a, b) => a.total_score - b.total_score)
   }
+  const {courseInfo, setCourseInfo} = useContext(CourseInfo)
 
   const findPlayerName = (id) => {
     return leagueMembers.find(member => member.id === id).name
@@ -29,12 +32,17 @@ const RoundOverview = () => {
 
   return (
     <div>
-      <h2>{location.state.course_name}</h2>
+      <CourseHeader
+        name={courseInfo.currentCourse.name}
+        city={courseInfo.currentCourse.city}
+        state={courseInfo.currentCourse.state}
+      />
       <p className='round-par'>Par: {location.state.total_par}</p>
       <p className='round-date'>Date: {location.state.date}</p>
       <div className='round-players-container'>
         {playerInfo()}
       </div>
+      
     </div>
   )
 }

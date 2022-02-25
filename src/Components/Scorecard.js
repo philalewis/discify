@@ -4,8 +4,9 @@ import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import Player from './Player'
 import { scoreAHole, endRound } from '../apiCalls'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import '../Styles/Scorecard.scss'
+import CourseHeader from './CourseHeader'
 
 const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
@@ -15,7 +16,6 @@ const Scorecard = () => {
   const [scores, setScores] = useState([])
   const {courseInfo, setCourseInfo} = useContext(CourseInfo)
   const navigate = useNavigate()
-
 
   useEffect(() => {
     setCurrentHole({
@@ -108,6 +108,11 @@ const Scorecard = () => {
 
   return (
     <div>
+      <CourseHeader
+        name={courseInfo.currentCourse.name}
+        city={courseInfo.currentCourse.city}
+        state={courseInfo.currentCourse.state}
+      />
       <h2 className='hole-number'>Hole {currentHole.number}</h2>
       <div className='player-score-container'>
         { scorecard.length && displayPlayers() }

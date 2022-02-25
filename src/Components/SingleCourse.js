@@ -4,6 +4,7 @@ import { useLocation, Link } from 'react-router-dom'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { getSingleCourse } from '../apiCalls'
 import '../Styles/SingleCourse.scss'
+import CourseHeader from './CourseHeader'
 
 const SingleCourse = () => {
   const location = useLocation()
@@ -12,7 +13,7 @@ const SingleCourse = () => {
 
   const [ course, setCourse ] = useState({})
   const [ layout, setLayout ] = useState({})
-  const {courseInfo, setCourseInfo} = useContext(CourseInfo)
+  const { courseInfo, setCourseInfo } = useContext(CourseInfo)
 
   useEffect(() => {
     getSingleCourse(id)
@@ -43,10 +44,12 @@ const SingleCourse = () => {
 
   return (
     <>
-      <h2>{course.name}</h2>
-      {/* <p>{course.location}</p> */}
+      <div className="course-header">
+        <h2 className="course-name">{course.name}</h2>
+        <p className="course-city">{course.city}, </p>
+        <p className="course-state">{course.state}</p>
+      </div>
       {course.rating > 0 && <p>{course.rating} /5</p>}
-      <p>{course.city}, {course.state}</p>
       <p>Number of Holes: {course.holes}</p>
       <Select onChange={event => onChange(event.value)} options={layoutOptions()}/>
       { layout.name &&

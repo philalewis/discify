@@ -19,8 +19,8 @@ const RoundOverview = () => {
       return (
         <div key={player.player_id}>
           <h3>{findPlayerName(parseInt(player.player_id))}</h3>
-          <p>{player.total_score}</p>
-          <p>({player.score})</p>
+          <p className='player-total'>{player.total_score}</p>
+          <p className='player-score'>({player.score})</p>
         </div>
       )
     })
@@ -29,8 +29,8 @@ const RoundOverview = () => {
   return (
     <div>
       <h2>{location.state.course_name}</h2>
-      <p>Par: {location.state.total_par}</p>
-      <p>Date: {location.state.date}</p>
+      <p className='round-par'>Par: {location.state.total_par}</p>
+      <p className='round-date'>Date: {location.state.date}</p>
       {playerInfo()}
     </div>
   )

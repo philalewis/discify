@@ -49,7 +49,7 @@
 }
 
 @mixin white-container() {
-  @include card-shadow()
+  @include card-shadow();
   background-color: $white;
   margin: 5%;
   border-radius: 6px;

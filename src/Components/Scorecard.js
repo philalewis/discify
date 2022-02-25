@@ -76,6 +76,13 @@ const Scorecard = () => {
       par: hole.par,
       distance: hole.distance
     })
+    // const resetScores = scorecard.map(player => {
+    //   return {
+    //     ...player,
+    //     score: hole.par
+    //   }
+    // })
+    // setScorecard(resetScores)
   }
 
   const postHoleScores = () => {
@@ -114,6 +121,8 @@ const Scorecard = () => {
         state={courseInfo.currentCourse.state}
       />
       <h2 className='hole-number'>Hole {currentHole.number}</h2>
+      <p className='distance'>{currentHole.distance} ft</p>
+      <p className="par">Par  {currentHole.par}</p>
       <div className='player-score-container'>
         { scorecard.length && displayPlayers() }
         {checkLastHole()}

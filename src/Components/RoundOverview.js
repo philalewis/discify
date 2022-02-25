@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import '../Styles/RoundOverview.scss'
@@ -41,8 +41,8 @@ const RoundOverview = () => {
       <p className='round-date'>Date: {location.state.date}</p>
       <div className='round-players-container'>
         {playerInfo()}
+      <Link to='/'><button className="go-home">DONE</button></Link>
       </div>
-      
     </div>
   )
 }

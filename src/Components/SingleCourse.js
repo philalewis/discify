@@ -52,13 +52,14 @@ const SingleCourse = () => {
       {course.rating > 0 && <p>{course.rating} /5</p>}
       <p>Number of Holes: {course.holes}</p>
       <Select onChange={event => onChange(event.value)} options={layoutOptions()}/>
-      { layout.name &&
+      { 
+        layout.name &&
         <section className='layout'>
           <p>Name: {layout.name}</p>
           <p>Description: {layout.description}</p>
           <p>Number of Holes: {layout.holes.length}</p>
           <p>Par: {layout.total_par}</p>
-          <p>Distance: {layout.total_distance}</p>
+          <p>Distance: {layout.total_distance} ft</p>
         </section>
       }
       <Link to='/setup_scorecard/'>

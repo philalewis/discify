@@ -131,14 +131,8 @@ const Scorecard = () => {
   }
 
   const endCurrentRound = () => {
-    endRound(scorecard.roundId)
-    .then(data => {
-      setScorecard({
-        ...scorecard,
-        final: data
-      })
-      navigate('/round-overview')
-    })
+    endRound(courseInfo.roundId)
+    .then(data => navigate('/round-overview', data))
     .catch(error => setErrorMessage(error))
   }
 

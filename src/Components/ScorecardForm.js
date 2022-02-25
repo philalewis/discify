@@ -9,7 +9,6 @@ import { Errors, ErrorsProvider } from '../Contexts/ErrorsProvider'
 
 
 const ScorecardForm = () => {
-  // const [ players, setPlayers ] = useState([])
   const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
   const {errorMessage, setErrorMessage} = useContext(Errors)
@@ -28,7 +27,6 @@ const ScorecardForm = () => {
       score: 0,
       totalScore: 0
     }])
-    // setPlayers([...players, event.value])
   }
 
   const playerNames = scorecard.length > 0 ?

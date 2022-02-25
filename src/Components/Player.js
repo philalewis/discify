@@ -2,18 +2,15 @@ import React, { useState, useContext, useEffect } from 'react'
 import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
 import '../Styles/Player.scss'
 
-const Player = ({ name, id, totalScore, par, changeScore }) => {
-  const [ score, setScore ] = useState(par)
+const Player = ({ name, id, totalScore, par, changeScore, score }) => {
 
   const plus = () => {
     let newScore = score + 1
-    setScore(newScore)
     changeScore(id, newScore)
   }
 
   const minus = () => {
     let newScore = score <= 1 ? 1 : score - 1
-    setScore(newScore)
     changeScore(id, newScore)
   }
 

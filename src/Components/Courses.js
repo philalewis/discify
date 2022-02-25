@@ -22,7 +22,6 @@ const Courses = () => {
 
   useEffect(() => {
     const searchURL = location.state
-    console.log(searchURL)
     getFilteredCourses(searchURL)
     .then(data => {
       setCourseInfo({

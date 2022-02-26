@@ -21,6 +21,9 @@ const Scorecard = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
+    if (!scorecard.length) {
+      return navigate('/')
+    }
     const hole = courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === holeNumber)
     setCurrentHole({
       number: hole.hole_number,
@@ -114,15 +117,25 @@ const Scorecard = () => {
     .catch(error => setErrorMessage(error))
   }
 
-  // const nothingHere = (
-  //   <div>
-  //     <h3>Sorry, there's nothing on this page.</h3>
-  //     <Link to='/'><button className="go-home">OKAY</button></Link>
-  //   </div>
-  // )
+  // const displayItems = scorecard.length > 0 ?
+  //   (
+  //     <>
+  //       <CourseHeader
+  //         name={courseInfo.currentCourse.name}
+  //         city={courseInfo.currentCourse.city}
+  //         state={courseInfo.currentCourse.state}
+  //       />
+  //       <h2 className='hole-number'>Hole {currentHole.number}</h2>
+  //       <p className='distance'>{currentHole.distance} ft</p>
+  //       <p className="par">Par  {currentHole.par}</p>
+  //       <div className='player-score-container'>
+  //         { scorecard.length && displayPlayers() }
+  //         {checkLastHole()}
+  //       </div>
+  //     </>
+  //   ) : <div>Sorry, no rounds are currently in progress. Go home.</div>
 
   return (
-    // !courseInfo.roundId ? {nothingHere} :
     <div>
       <CourseHeader
         name={courseInfo.currentCourse.name}

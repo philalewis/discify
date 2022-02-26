@@ -36,6 +36,18 @@ export const getAllPlayers = () => {
     .then(response => handleError(response))
 }
 
+export const getSinglePlayer = (id) => {
+  return fetch(`https://discify-api.herokuapp.com/api/v1/players/${id}`)
+  .then(response => handleError(response))
+}
+
+export const deletePlayer = (id) => {
+  return fetch(`https://discify-api.herokuapp.com/api/v1/players/${id}`, {
+    method: 'Delete',
+    })
+    .then(response => handleError(response))
+}
+
 export const getSingleCourse = (id) => {
   return fetch(`https://discify-api.herokuapp.com/api/v1/courses/${id}`)
   .then(response => handleError(response))

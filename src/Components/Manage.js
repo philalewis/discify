@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {addNewPlayer, getAllPlayers} from '../apiCalls'
+import SinglePlayer from './SinglePlayer'
 import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import '../Styles/Manage.scss'
@@ -27,7 +28,9 @@ const Manage = () => {
 
   const playerNames = leagueMembers.length > 0 ? leagueMembers.map(member => {
     return (
-      <p key={member.id}>{member.name}</p>
+      <Link to={`/players/${member.id}`} key={member.id}>
+        <button key={member.id}>{member.name}</button>
+      </Link>
     )
   }) : null
 

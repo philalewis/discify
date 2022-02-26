@@ -9,6 +9,7 @@ import { scoreAHole, endRound } from '../apiCalls'
 import { useNavigate, Link } from 'react-router-dom'
 import '../Styles/Scorecard.scss'
 import CourseHeader from './CourseHeader'
+import EndCurrentRoundModal from './EndCurrentRoundModal'
 
 const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
@@ -18,7 +19,12 @@ const Scorecard = () => {
   const [ inProgress, setInProgress ] = useState(true)
   const { scores, setScores } = useContext(RoundScores)
   const { courseInfo, setCourseInfo } = useContext(CourseInfo)
+  const [ confirm, setConfirm ] = useState(false)
   const navigate = useNavigate()
+  
+  const toggleConfirm = () => {
+    setConfirm(!confirm)
+  }
 
   useEffect(() => {
     if (!scorecard.length) {
@@ -113,30 +119,22 @@ const Scorecard = () => {
 
   const endCurrentRound = () => {
     endRound(courseInfo.roundId)
-    .then(data => navigate('/round-overview', {state: data}))
+    .then(data => {
+      setScorecard([])
+      navigate('/round-overview', {state: data})
+    })
     .catch(error => setErrorMessage(error))
   }
 
-  // const displayItems = scorecard.length > 0 ?
-  //   (
-  //     <>
-  //       <CourseHeader
-  //         name={courseInfo.currentCourse.name}
-  //         city={courseInfo.currentCourse.city}
-  //         state={courseInfo.currentCourse.state}
-  //       />
-  //       <h2 className='hole-number'>Hole {currentHole.number}</h2>
-  //       <p className='distance'>{currentHole.distance} ft</p>
-  //       <p className="par">Par  {currentHole.par}</p>
-  //       <div className='player-score-container'>
-  //         { scorecard.length && displayPlayers() }
-  //         {checkLastHole()}
-  //       </div>
-  //     </>
-  //   ) : <div>Sorry, no rounds are currently in progress. Go home.</div>
-
   return (
     <div>
+      {
+        confirm &&
+        <EndCurrentRoundModal
+          toggleConfirm={toggleConfirm}
+          endCurrentRound={endCurrentRound}
+        />
+      }
       <CourseHeader
         name={courseInfo.currentCourse.name}
         city={courseInfo.currentCourse.city}
@@ -148,6 +146,7 @@ const Scorecard = () => {
       <div className='player-score-container'>
         { scorecard.length && displayPlayers() }
         {checkLastHole()}
+        <button onClick={toggleConfirm}>End round early</button>
       </div>
     </div>
   )

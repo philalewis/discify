@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Select from 'react-select'
 import { startRound } from '../apiCalls'
@@ -11,23 +11,32 @@ import { RoundScores } from '../Contexts/RoundScoresProvider'
 const ScorecardForm = () => {
   const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
-  const {errorMessage, setErrorMessage} = useContext(Errors)
-  const {courseInfo, setCourseInfo} = useContext(CourseInfo)
+  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { courseInfo, setCourseInfo } = useContext(CourseInfo)
   const { scores, setScores } = useContext(RoundScores)
+  const [ options, setOptions ] = useState([])
 
-  const options = leagueMembers.map(member => {
-    return {
-      value: member,
-      label: member.name
-    }
-  })
+  useEffect(() => {
+    setOptions(leagueMembers.map(member => {
+      return {
+        value: member,
+        label: member.name
+      }
+    }))
+  }, [])
 
   const handleChange = event => {
+    const newOptions = options.filter(option => {
+      console.log('option>>>', option, 'event.value>>>>', event.value)
+      return option.label !== event.value.name
+    })
+
     setScorecard([...scorecard, {
       ...event.value,
       score: 0,
       totalScore: 0
     }])
+    setOptions(newOptions)
   }
 
   const playerNames = scorecard.length > 0 ?

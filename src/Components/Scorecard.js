@@ -2,30 +2,49 @@ import React, { useContext, useState, useEffect } from 'react'
 import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
+import { HoleNumber } from '../Contexts/HoleNumberProvider'
+import { RoundScores } from '../Contexts/RoundScoresProvider'
 import Player from './Player'
 import { scoreAHole, endRound } from '../apiCalls'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import '../Styles/Scorecard.scss'
+import CourseHeader from './CourseHeader'
 
 const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
   const [ currentHole, setCurrentHole ] = useState({par: 3, number: 1, distance: 0})
-  const {errorMessage, setErrorMessage} = useContext(Errors)
-  const [inProgress, setInProgress] = useState(true)
-  const [scores, setScores] = useState([])
-  const {courseInfo, setCourseInfo} = useContext(CourseInfo)
+  const { holeNumber, setHoleNumber } = useContext(HoleNumber)
+  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const [ inProgress, setInProgress ] = useState(true)
+  const { scores, setScores } = useContext(RoundScores)
+  const { courseInfo, setCourseInfo } = useContext(CourseInfo)
   const navigate = useNavigate()
 
-
   useEffect(() => {
+    if (!scorecard.length) {
+      return navigate('/')
+    }
+    const hole = courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === holeNumber)
     setCurrentHole({
-      number: 1,
-      par: courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === 1).par,
-      distance: courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === 1).distance
+      number: hole.hole_number,
+      par: hole.par,
+      distance: hole.distance
     })
-  }, [])
+    const resetScores = scorecard.map(player => {
+      return {
+        ...player,
+        score: hole.par
+      }
+    })
+    setScorecard(resetScores)
+    if(holeNumber === courseInfo.currentCourse.layout.holes.length){
+      setInProgress(false)
+    }
+    console.log(scorecard)
+  }, [holeNumber])
 
   const displayPlayers = () => {
+    console.log(scorecard)
     scorecard.sort((a,b) => a.id - b.id)
     return scorecard.map(player => {
       return (
@@ -34,9 +53,10 @@ const Scorecard = () => {
           key={player.id}
           id={player.id}
           par={courseInfo.currentCourse.layout.holes.find(hole => {
-            return hole.hole_number === currentHole.number
+            return hole.hole_number === holeNumber
           }).par}
           totalScore={findTotalScore(player.id)}
+          score={player.score}
           changeScore={changeScore}
         />
       )
@@ -59,7 +79,6 @@ const Scorecard = () => {
 
   const changeScore = (id, score) => {
     let player = scorecard.find(player => player.id === id)
-
     player.score = score
     const otherPlayers = scorecard.filter(player => player.id !== id)
     setScorecard([...otherPlayers, player])
@@ -67,15 +86,7 @@ const Scorecard = () => {
   }
 
   const nextHole = () => {
-    const hole = courseInfo.currentCourse.layout.holes.find(hole => hole.hole_number === currentHole.number + 1)
-    if(hole.hole_number === courseInfo.currentCourse.layout.holes.length){
-      setInProgress(false)
-    }
-    setCurrentHole({
-      number: hole.hole_number,
-      par: hole.par,
-      distance: hole.distance
-    })
+    setHoleNumber(holeNumber + 1)
   }
 
   const postHoleScores = () => {
@@ -106,9 +117,34 @@ const Scorecard = () => {
     .catch(error => setErrorMessage(error))
   }
 
+  // const displayItems = scorecard.length > 0 ?
+  //   (
+  //     <>
+  //       <CourseHeader
+  //         name={courseInfo.currentCourse.name}
+  //         city={courseInfo.currentCourse.city}
+  //         state={courseInfo.currentCourse.state}
+  //       />
+  //       <h2 className='hole-number'>Hole {currentHole.number}</h2>
+  //       <p className='distance'>{currentHole.distance} ft</p>
+  //       <p className="par">Par  {currentHole.par}</p>
+  //       <div className='player-score-container'>
+  //         { scorecard.length && displayPlayers() }
+  //         {checkLastHole()}
+  //       </div>
+  //     </>
+  //   ) : <div>Sorry, no rounds are currently in progress. Go home.</div>
+
   return (
     <div>
+      <CourseHeader
+        name={courseInfo.currentCourse.name}
+        city={courseInfo.currentCourse.city}
+        state={courseInfo.currentCourse.state}
+      />
       <h2 className='hole-number'>Hole {currentHole.number}</h2>
+      <p className='distance'>{currentHole.distance} ft</p>
+      <p className="par">Par  {currentHole.par}</p>
       <div className='player-score-container'>
         { scorecard.length && displayPlayers() }
         {checkLastHole()}

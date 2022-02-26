@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/discify-logo.png'
 import DropdownMenu from './DropdownMenu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,18 +11,19 @@ const Navbar = () => {
   const [clicked, setClick] = useState(false)
 
   const toggleClick = () => {
-    console.log(clicked)
     setClick(!clicked)
   }
 
   return (
     <>
       <nav>
-      <img
-        className='logo'
-        src={logo}
-        alt='Discify Logo'
-      />
+      <Link to='/'>
+        <img
+          className='logo'
+          src={logo}
+          alt='Discify Logo'
+        />
+      </Link>
       <button
         className='dropdown-button'
         onClick={toggleClick}>

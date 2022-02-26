@@ -6,9 +6,6 @@ const DropdownMenu = () => {
 
   return(
     <div className='dropdown-container'>
-      <Link to="/">
-        <button className='home-link-btn'>HOME</button>
-      </Link>
       <Link to="/manage/">
         <button className='manage-link-btn'>MANAGE LEAGUE</button>
       </Link>

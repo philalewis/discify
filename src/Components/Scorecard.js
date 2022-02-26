@@ -3,6 +3,7 @@ import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import { HoleNumber } from '../Contexts/HoleNumberProvider'
+import { RoundScores } from '../Contexts/RoundScoresProvider'
 import Player from './Player'
 import { scoreAHole, endRound } from '../apiCalls'
 import { useNavigate, Link } from 'react-router-dom'
@@ -13,10 +14,10 @@ const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
   const [ currentHole, setCurrentHole ] = useState({par: 3, number: 1, distance: 0})
   const { holeNumber, setHoleNumber } = useContext(HoleNumber)
-  const {errorMessage, setErrorMessage} = useContext(Errors)
-  const [inProgress, setInProgress] = useState(true)
-  const [scores, setScores] = useState([])
-  const {courseInfo, setCourseInfo} = useContext(CourseInfo)
+  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const [ inProgress, setInProgress ] = useState(true)
+  const { scores, setScores } = useContext(RoundScores)
+  const { courseInfo, setCourseInfo } = useContext(CourseInfo)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -40,6 +41,7 @@ const Scorecard = () => {
   }, [holeNumber])
 
   const displayPlayers = () => {
+    console.log(scorecard)
     scorecard.sort((a,b) => a.id - b.id)
     return scorecard.map(player => {
       return (

@@ -41,7 +41,6 @@ export const getSingleCourse = (id) => {
   .then(response => handleError(response))
 }
 
-
 export const startRound = (roundData) => {
   return fetch('https://discify-api.herokuapp.com/api/v1/rounds', {
     method: 'POST',

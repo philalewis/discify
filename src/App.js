@@ -7,6 +7,7 @@ import { CourseInfoProvider, CourseInfo } from './Contexts/CourseInfoProvider'
 import { ErrorsProvider, Errors } from './Contexts/ErrorsProvider'
 import { ScorecardInfoProvider, ScorecardInfo } from './Contexts/ScorecardInfoProvider'
 import { HoleNumberProvider, HoleNumber } from './Contexts/HoleNumberProvider'
+import { RoundScoresProvider, RoundScores } from './Contexts/RoundScoresProvider'
 import Navbar from './Components/Navbar'
 import DropdownMenu from './Components/DropdownMenu'
 import Manage from './Components/Manage'
@@ -18,7 +19,6 @@ import SingleCourse from './Components/SingleCourse'
 import ScorecardForm from './Components/ScorecardForm'
 import RoundOverview from './Components/RoundOverview'
 
-
 const App = () => {
 
   return (
@@ -28,18 +28,20 @@ const App = () => {
           <ScorecardInfoProvider>
             <LeagueMembersProvider>
               <HoleNumberProvider>
-                <Navbar />
-                <ErrorModal />
-                <Routes>
-                  <Route exact path='/' element={<Home />} />
-                  <Route exact path='/manage/' element={<Manage />} />
-                  <Route exact path='/stats/' element={<Stats />} />
-                  <Route exact path='/scorecard/' element={<Scorecard />} />
-                  <Route exact path='/setup_scorecard/' element={<ScorecardForm />} />
-                  <Route path='/courses/' element={<Courses />} />
-                  <Route exact path='/course/:id' element={<SingleCourse />} />
-                  <Route exact path='/round-overview' element={<RoundOverview />} />
-                </Routes>
+                <RoundScoresProvider>
+                  <Navbar />
+                  <ErrorModal />
+                  <Routes>
+                    <Route exact path='/' element={<Home />} />
+                    <Route exact path='/manage/' element={<Manage />} />
+                    <Route exact path='/stats/' element={<Stats />} />
+                    <Route exact path='/scorecard/' element={<Scorecard />} />
+                    <Route exact path='/setup_scorecard/' element={<ScorecardForm />} />
+                    <Route path='/courses/' element={<Courses />} />
+                    <Route exact path='/course/:id' element={<SingleCourse />} />
+                    <Route exact path='/round-overview' element={<RoundOverview />} />
+                  </Routes>
+                </RoundScoresProvider>
               </HoleNumberProvider>
             </LeagueMembersProvider>
           </ScorecardInfoProvider>

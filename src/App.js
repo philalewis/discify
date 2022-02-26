@@ -18,6 +18,7 @@ import ErrorModal from './Components/ErrorModal'
 import SingleCourse from './Components/SingleCourse'
 import ScorecardForm from './Components/ScorecardForm'
 import RoundOverview from './Components/RoundOverview'
+import SinglePlayer from './Components/SinglePlayer'
 
 const App = () => {
 
@@ -40,6 +41,7 @@ const App = () => {
                     <Route path='/courses/' element={<Courses />} />
                     <Route exact path='/course/:id' element={<SingleCourse />} />
                     <Route exact path='/round-overview' element={<RoundOverview />} />
+                    <Route path='/players/:id' element={<SinglePlayer />}/>
                   </Routes>
                 </RoundScoresProvider>
               </HoleNumberProvider>

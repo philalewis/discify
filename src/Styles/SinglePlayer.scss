@@ -1,0 +1,10 @@
+@import './_variables';
+@import './_mixins';
+
+.single-player-container {
+  @include white-container();
+}
+
+.remove-player-button{
+    @include button-style()
+}

@@ -38,12 +38,12 @@
 
 
 .cancel-button {
-  @include button-style()
+  @include button-style();
   width: 26vw;
   background-color: #aaaaaa;
 }
 
 .yes-button {
-  @include button-style()
+  @include button-style();
   width: 26vw;
 }

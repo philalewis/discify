@@ -135,18 +135,22 @@ const Scorecard = () => {
           endCurrentRound={endCurrentRound}
         />
       }
-      <CourseHeader
-        name={courseInfo.currentCourse.name}
-        city={courseInfo.currentCourse.city}
-        state={courseInfo.currentCourse.state}
-      />
-      <h2 className='hole-number'>Hole {currentHole.number}</h2>
-      <p className='distance'>{currentHole.distance} ft</p>
-      <p className="par">Par  {currentHole.par}</p>
       <div className='player-score-container'>
+        <CourseHeader
+          name={courseInfo.currentCourse.name}
+          city={courseInfo.currentCourse.city}
+          state={courseInfo.currentCourse.state}
+        />
+        <h2 className='hole-number'>Hole {currentHole.number}</h2>
+        <div className="hole-details">
+          <p className='distance'>{currentHole.distance} ft</p>
+          <p className="par">Par {currentHole.par}</p>
+        </div>
         { scorecard.length && displayPlayers() }
-        {checkLastHole()}
-        <button onClick={toggleConfirm}>End round early</button>
+        <div className="scorecard-btn-container">
+          {checkLastHole()}
+          <button className="end-round-early-btn" onClick={toggleConfirm}>End round early</button>
+        </div>
       </div>
     </div>
   )

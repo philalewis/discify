@@ -25,4 +25,8 @@ describe('Manage league component', () => {
     cy.get('p').eq(4).contains('Hannah')
   })
 
+  it('should be able to remove a player from the league', () => {
+
+  })
+
 })

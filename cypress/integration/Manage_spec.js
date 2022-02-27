@@ -19,6 +19,13 @@ describe('Manage league component', () => {
       "rounds_played": 0
     })
 
+    cy.intercept('Delete','https://discify-api.herokuapp.com/api/v1/players/2020', {
+        statusCode: 200,
+        body: {
+          message: 'player 2020 was deleted'
+        }
+      })
+
     cy.visit('http://localhost:3000/')
       .get('.dropdown-button').click()
       .get('a').eq(1).click()

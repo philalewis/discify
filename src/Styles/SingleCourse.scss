@@ -2,5 +2,19 @@
 @import './_mixins';
 
 .choose-course-btn {
-  @include button-style()
+  @include button-style();
+  width: 100%;
+  margin-top: 5%;
+}
+
+.single-course-container {
+  @include white-container()
+}
+
+.bold {
+  font-weight: 700;
+}
+
+p {
+  margin: 2% 0;
 }

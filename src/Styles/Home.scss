@@ -5,6 +5,19 @@
   @include white-container();
 }
 
+.league-member-container,
+.leaderboard-header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+}
+
+.leaderboard-header {
+  font-weight: 650;
+  border-bottom: 2px solid $dark-navy;
+  margin-bottom: 5%;
+}
+
 .home-header {
   margin: 5%;
   border-bottom: 4px solid $orange;

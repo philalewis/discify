@@ -32,16 +32,18 @@ const RoundOverview = () => {
 
   return (
     <div>
-      <CourseHeader
-        name={courseInfo.currentCourse.name}
-        city={courseInfo.currentCourse.city}
-        state={courseInfo.currentCourse.state}
-      />
-      <p className='round-par'>Par: {location.state.total_par}</p>
-      <p className='round-date'>Date: {location.state.date}</p>
       <div className='round-players-container'>
+        <CourseHeader
+          name={courseInfo.currentCourse.name}
+          city={courseInfo.currentCourse.city}
+          state={courseInfo.currentCourse.state}
+        />
+        <p className='round-par'><span className="bold">Par:</span> {location.state.total_par}</p>
+        <p className='round-date'><span className="bold">Date:</span> {location.state.date}</p>
         {playerInfo()}
-      <Link to='/'><button className="go-home">DONE</button></Link>
+        <div className="go-home-container">
+          <Link to='/'><button className="go-home">DONE</button></Link>
+        </div>
       </div>
     </div>
   )

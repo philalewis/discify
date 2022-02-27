@@ -5,7 +5,8 @@
   @include white-container();
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  height: 77vh;
 }
 
 .next-hole-btn,
@@ -15,10 +16,36 @@
 
 .hole-number {
   text-align: center;
-  font-size: 50px;
+  font-size: 35px;
   font-weight: 500;
 }
 
 .start-round-button {
   @include button-style();
+}
+
+.hole-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.scorecard-btn-container {
+  position: absolute;
+  bottom: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.next-hole-btn,
+.end-round-btn,
+.end-round-early-btn {
+  margin: 2% 10%;
+}
+
+.end-round-early-btn {
+  margin-bottom: 0;
 }

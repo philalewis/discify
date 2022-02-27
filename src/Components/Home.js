@@ -11,7 +11,7 @@ const Home = () => {
 
     return leagueMembers.map(member => {
       return (
-        <div key={member.id}>
+        <div key={member.id} className='league-member-container'>
           <p>{member.name}</p>
           <p>{member.average_score}</p>
           <p>{member.rounds_played}</p>
@@ -25,7 +25,12 @@ const Home = () => {
       <Searchbar />
       <h2 className='home-header'>Leaderboard:</h2>
       <div className='members-container'>
-        <h1>{members()}</h1>
+        <div className='leaderboard-header'>
+          <p>Name</p>
+          <p>Average</p>
+          <p>Rounds</p>
+        </div>
+        {members()}
       </div>
     </div>
   )

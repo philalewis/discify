@@ -1,32 +1,29 @@
 @import './_variables';
 @import './_mixins';
 
-.round-players-container {
+.start-round-button {
+  @include button-style();
+  width: 100%;
+  margin-top: auto;
+  padding: 15px 90px;
+}
+
+.choose-players-container {
   @include white-container();
   height: 77vh;
   display: flex;
   flex-direction: column;
 }
 
-.player-line-container {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-}
-
-.go-home {
-  @include button-style();
-  width: 100%;
-}
-
 .bold {
-  font-weight: 650;
+  font-weight: 700;
 }
 
-.round-date {
-  border-bottom: 2px solid $dark-navy;
+p {
+  margin: 2% 0;
 }
 
-.go-home-container {
+.round-button-container {
   position: absolute;
   bottom: 5%;
   display: flex;
@@ -34,4 +31,8 @@
   width: 100%;
   left: 0;
   right: 0;
+}
+
+h2 {
+  margin-bottom: 5%;
 }

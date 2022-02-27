@@ -31,7 +31,7 @@ const App = () => {
               <HoleNumberProvider>
                 <RoundScoresProvider>
                   <Navbar />
-                  <ErrorModal />
+                  <ErrorModal/>
                   <Routes>
                     <Route exact path='/' element={<Home />} />
                     <Route exact path='/manage/' element={<Manage />} />

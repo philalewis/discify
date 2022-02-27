@@ -4,10 +4,23 @@
 .minus-btn,
 .plus-btn {
   @include navy-button();
+  width: 30px;
+  height: 30px;
 }
 
 .player-score-input {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 3fr repeat(3, 1fr);
+  margin: 3%;
+}
+
+.navy-btn-container {
   display: flex;
-    align-items: center;
-    justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+}
+
+.name-container {
+  display: flex;
 }

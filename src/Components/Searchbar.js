@@ -17,6 +17,10 @@ const Searchbar = () => {
     navigate(newURL, {state: newURL})
   }
 
+  const handleKeyUp = (event) => {
+    return event.code === 'Enter' ? updateSearchContext() : null
+  }
+
   return (
     <div className='search-bar-container'>
       <input
@@ -24,6 +28,7 @@ const Searchbar = () => {
         className="search-bar"
         value={inputValue}
         onChange={event => handleChange(event)}
+        onKeyUp={event => handleKeyUp(event)}
       />
       <button className="search-btn" onClick={updateSearchContext}>SEARCH</button>
     </div>

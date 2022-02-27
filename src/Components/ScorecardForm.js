@@ -7,6 +7,7 @@ import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors, ErrorsProvider } from '../Contexts/ErrorsProvider'
 import { RoundScores } from '../Contexts/RoundScoresProvider'
+import '../Styles/ScoreCardForm.scss'
 
 const ScorecardForm = () => {
   const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
@@ -61,17 +62,19 @@ const ScorecardForm = () => {
   }
 
   return (
-    <>
+    <div className="choose-players-container">
       <h2>Choose Players</h2>
       <Select options={options} onChange={event => handleChange(event)}/>
       {playerNames}
-      <Link to='/scorecard/'
-        className='start-round-btn'
-        onClick={beginRound}
-      >
-        <button className='start-round-button'>START ROUND</button>
-      </Link>
-    </>
+      <div className="round-button-container">
+        <Link to='/scorecard/'
+          className='start-round-btn'
+          onClick={beginRound}
+        >
+          <button className='start-round-button'>START ROUND</button>
+        </Link>
+      </div>
+    </div>
   )
 }
 

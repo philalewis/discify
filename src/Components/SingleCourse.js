@@ -43,23 +43,22 @@ const SingleCourse = () => {
   }
 
   return (
-    <>
+    <div className="single-course-container">
       <div className="course-header">
         <h2 className="course-name">{course.name}</h2>
-        <p className="course-city">{course.city}, </p>
-        <p className="course-state">{course.state}</p>
+        <p className="course-location">{course.city}, {course.state}</p>
       </div>
-      {course.rating > 0 && <p>{course.rating} /5</p>}
-      <p>Number of Holes: {course.holes}</p>
+      {course.rating > 0 && <p className="course-rating"><span className="bold">Rating:</span> {course.rating}/5</p>}
+      <p><span className="bold">Number of Holes:</span> {course.holes}</p>
       <Select onChange={event => onChange(event.value)} options={layoutOptions()}/>
       { 
         layout.name &&
         <section className='layout'>
-          <p>Name: {layout.name}</p>
-          <p>Description: {layout.description}</p>
-          <p>Number of Holes: {layout.holes.length}</p>
-          <p>Par: {layout.total_par}</p>
-          <p>Distance: {layout.total_distance} ft</p>
+          <p><span className="bold">Layout:</span> {layout.name}</p>
+          <p><span className="bold">Number of Holes:</span> {layout.holes.length}</p>
+          <p><span className="bold">Par:</span> {layout.total_par}</p>
+          <p><span className="bold">Distance:</span> {layout.total_distance} ft</p>
+          <p><span className="bold">Description:</span> {layout.description}</p>
         </section>
       }
       <Link to='/setup_scorecard/'>
@@ -68,7 +67,7 @@ const SingleCourse = () => {
           onClick={handleClick}
         >CHOOSE COURSE</button>
       </Link>
-    </>
+    </div>
   )
 }
 

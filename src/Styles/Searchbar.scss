@@ -23,3 +23,9 @@
 .search-btn:hover {
   @include button-hover();
 }
+
+.search-bar:focus { 
+  outline: none;
+  border: 1px solid $orange;
+  box-shadow: 0 0 5px $orange;
+}

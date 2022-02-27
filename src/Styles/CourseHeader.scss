@@ -1,0 +1,7 @@
+@import './_variables';
+@import './_mixins';
+
+.course-header {
+  margin-bottom: 2%;
+  border-bottom: 1px solid $dark-navy;
+}

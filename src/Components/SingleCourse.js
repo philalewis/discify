@@ -4,13 +4,11 @@ import { useLocation, Link } from 'react-router-dom'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { getSingleCourse } from '../apiCalls'
 import '../Styles/SingleCourse.scss'
-import CourseHeader from './CourseHeader'
 
 const SingleCourse = () => {
   const location = useLocation()
   const pathname = location.pathname.split('/')
   const id = pathname[pathname.length - 1]
-
   const [ course, setCourse ] = useState({})
   const [ layout, setLayout ] = useState({})
   const { courseInfo, setCourseInfo } = useContext(CourseInfo)
@@ -48,25 +46,49 @@ const SingleCourse = () => {
         <h2 className="course-name">{course.name}</h2>
         <p className="course-location">{course.city}, {course.state}</p>
       </div>
-      {course.rating > 0 && <p className="course-rating"><span className="bold">Rating:</span> {course.rating}/5</p>}
-      <p><span className="bold">Number of Holes:</span> {course.holes}</p>
+      {
+        course.rating > 0 &&
+        <p className="course-rating">
+          <span className="bold">Rating:</span>
+          {course.rating}/5
+        </p>
+      }
+      <p>
+        <span className="bold">Number of Holes:</span>
+        {course.holes}
+      </p>
       <Select onChange={event => onChange(event.value)} options={layoutOptions()}/>
       { 
         layout.name &&
         <section className='layout'>
-          <p><span className="bold">Layout:</span> {layout.name}</p>
-          <p><span className="bold">Number of Holes:</span> {layout.holes.length}</p>
-          <p><span className="bold">Par:</span> {layout.total_par}</p>
-          <p><span className="bold">Distance:</span> {layout.total_distance} ft</p>
-          <p><span className="bold">Description:</span> {layout.description}</p>
+          <p>
+            <span className="bold">Layout: </span>
+            {layout.name}
+          </p>
+          <p>
+            <span className="bold">Number of Holes: </span>
+            {layout.holes.length}
+          </p>
+          <p>
+            <span className="bold">Par: </span>
+            {layout.total_par}
+          </p>
+          <p>
+            <span className="bold">Distance: </span>
+            {layout.total_distance} ft
+          </p>
+          <p>
+            <span className="bold">Description: </span>
+            {layout.description}
+          </p>
+          <Link to='/setup_scorecard/'>
+            <button
+              className="choose-course-btn"
+              onClick={handleClick}
+            >CHOOSE COURSE</button>
+          </Link>
         </section>
       }
-      <Link to='/setup_scorecard/'>
-        <button
-          className="choose-course-btn"
-          onClick={handleClick}
-        >CHOOSE COURSE</button>
-      </Link>
     </div>
   )
 }

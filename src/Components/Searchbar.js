@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Styles/Searchbar.scss'
-
 
 const Searchbar = () => {
   const [ inputValue, setInputValue ] = useState('')

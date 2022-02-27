@@ -6,7 +6,7 @@ import '../Styles/VerifyDeletionModal.scss'
 
 const VerifyDeletionModal = ({name, id, toggleVerify}) => {
 
-  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { setErrorMessage } = useContext(Errors)
   const navigate = useNavigate()
 
   const removePlayer = () => {

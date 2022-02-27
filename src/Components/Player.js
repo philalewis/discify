@@ -1,8 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
+import React from 'react'
 import '../Styles/Player.scss'
 
-const Player = ({ name, id, totalScore, par, changeScore, score }) => {
+const Player = ({ name, id, totalScore, changeScore, score }) => {
 
   const plus = () => {
     let newScore = score + 1
@@ -22,7 +21,9 @@ const Player = ({ name, id, totalScore, par, changeScore, score }) => {
       <div className="navy-btn-container">
         <button className='minus-btn' onClick={minus}>-</button>
       </div>
-      <p>{score}</p>
+      <div className="score-container">
+        <p>{score}</p>
+      </div>
       <div className="navy-btn-container">
         <button className='plus-btn' onClick={plus}>+</button>
       </div>

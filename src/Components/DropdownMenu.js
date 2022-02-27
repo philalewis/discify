@@ -9,14 +9,10 @@ const DropdownMenu = () => {
       <Link to="/manage/">
         <button className='manage-link-btn'>MANAGE LEAGUE</button>
       </Link>
-      <Link to="/stats/">
-        <button className='stats-link-btn'>LEAGUE STATS</button>
-      </Link>
       <Link to="/scorecard/">
         <button className='score-link-btn'>SCORECARD</button>
       </Link>
     </div>
-
   )
 }
 

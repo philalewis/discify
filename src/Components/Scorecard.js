@@ -6,19 +6,21 @@ import { HoleNumber } from '../Contexts/HoleNumberProvider'
 import { RoundScores } from '../Contexts/RoundScoresProvider'
 import Player from './Player'
 import { scoreAHole, endRound } from '../apiCalls'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import '../Styles/Scorecard.scss'
 import CourseHeader from './CourseHeader'
 import EndCurrentRoundModal from './EndCurrentRoundModal'
 
 const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
-  const [ currentHole, setCurrentHole ] = useState({par: 3, number: 1, distance: 0})
+  const [ currentHole, setCurrentHole ] = useState({
+    par: 3, number: 1, distance: 0
+  })
   const { holeNumber, setHoleNumber } = useContext(HoleNumber)
-  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { setErrorMessage } = useContext(Errors)
   const [ inProgress, setInProgress ] = useState(true)
   const { scores, setScores } = useContext(RoundScores)
-  const { courseInfo, setCourseInfo } = useContext(CourseInfo)
+  const { courseInfo } = useContext(CourseInfo)
   const [ confirm, setConfirm ] = useState(false)
   const navigate = useNavigate()
   
@@ -46,11 +48,9 @@ const Scorecard = () => {
     if(holeNumber === courseInfo.currentCourse.layout.holes.length){
       setInProgress(false)
     }
-    console.log(scorecard)
   }, [holeNumber])
 
   const displayPlayers = () => {
-    console.log(scorecard)
     scorecard.sort((a,b) => a.id - b.id)
     return scorecard.map(player => {
       return (
@@ -79,8 +79,14 @@ const Scorecard = () => {
 
   const checkLastHole = () => {
     return inProgress ?
-      <button className='next-hole-btn' onClick={postHoleScores}>NEXT HOLE</button> :
-      <button className='end-round-btn' onClick={postHoleScores}>END ROUND</button>
+      <button
+        className='next-hole-btn'
+        onClick={postHoleScores}
+      >NEXT HOLE</button> :
+      <button
+        className='end-round-btn'
+        onClick={postHoleScores}
+      >END ROUND</button>
   }
 
   const changeScore = (id, score) => {
@@ -127,7 +133,7 @@ const Scorecard = () => {
   }
 
   return (
-    <div>
+    <>
       {
         confirm &&
         <EndCurrentRoundModal
@@ -152,7 +158,7 @@ const Scorecard = () => {
           <button className="end-round-early-btn" onClick={toggleConfirm}>End round early</button>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

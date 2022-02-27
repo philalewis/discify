@@ -5,12 +5,11 @@
   @include button-style();
   width: 100%;
   margin-top: auto;
-  padding: 15px 90px;
+  padding: 15px 50px;
 }
 
 .choose-players-container {
   @include white-container();
-  height: 77vh;
   display: flex;
   flex-direction: column;
 }
@@ -20,17 +19,23 @@
 }
 
 p {
-  margin: 2% 0;
+  margin: .5% 0;
+}
+
+.player-names {
+  margin-top: 5%;
 }
 
 .round-button-container {
-  position: absolute;
-  bottom: 5%;
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+  height: 100%;
   width: 100%;
   left: 0;
   right: 0;
+  margin-top: 5%;
 }
 
 h2 {

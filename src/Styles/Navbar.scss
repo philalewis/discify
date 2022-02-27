@@ -5,13 +5,15 @@ nav {
   @include nav-shadow();
   background-color: $dark-navy;
   color: $white;
-  padding: 5%;
+  padding: 2% 4% 2% 4%;
   display: flex;
   justify-content: space-between;
+  height: 10vh;
 }
 
 .logo {
-  width: 53%;
+  margin: 1%;
+  height: 10vh;
 }
 
 .dropdown-button {

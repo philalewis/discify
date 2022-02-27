@@ -7,11 +7,11 @@ import CourseHeader from './CourseHeader'
 
 const RoundOverview = () => {
   const location = useLocation()
-  const { leagueMembers, setLeagueMembers} = useContext(LeagueMembers)
+  const { leagueMembers } = useContext(LeagueMembers)
   const sortPlayers = () => {
     location.state.scores.sort((a, b) => a.total_score - b.total_score)
   }
-  const {courseInfo, setCourseInfo} = useContext(CourseInfo)
+  const { courseInfo } = useContext(CourseInfo)
 
   const findPlayerName = (id) => {
     return leagueMembers.find(member => member.id === id).name
@@ -40,7 +40,9 @@ const RoundOverview = () => {
         />
         <p className='round-par'><span className="bold">Par:</span> {location.state.total_par}</p>
         <p className='round-date'><span className="bold">Date:</span> {location.state.date}</p>
-        {playerInfo()}
+        <div className="player-info-container">
+          {playerInfo()}
+        </div>
         <div className="go-home-container">
           <Link to='/'><button className="go-home">DONE</button></Link>
         </div>

@@ -5,16 +5,16 @@ import { startRound } from '../apiCalls'
 import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 import { ScorecardInfo } from '../Contexts/ScorecardInfoProvider'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
-import { Errors, ErrorsProvider } from '../Contexts/ErrorsProvider'
+import { Errors } from '../Contexts/ErrorsProvider'
 import { RoundScores } from '../Contexts/RoundScoresProvider'
 import '../Styles/ScoreCardForm.scss'
 
 const ScorecardForm = () => {
-  const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
+  const { leagueMembers } = useContext(LeagueMembers)
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
-  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { setErrorMessage } = useContext(Errors)
   const { courseInfo, setCourseInfo } = useContext(CourseInfo)
-  const { scores, setScores } = useContext(RoundScores)
+  const { setScores } = useContext(RoundScores)
   const [ options, setOptions ] = useState([])
 
   useEffect(() => {
@@ -28,7 +28,6 @@ const ScorecardForm = () => {
 
   const handleChange = event => {
     const newOptions = options.filter(option => {
-      console.log('option>>>', option, 'event.value>>>>', event.value)
       return option.label !== event.value.name
     })
 
@@ -65,7 +64,9 @@ const ScorecardForm = () => {
     <div className="choose-players-container">
       <h2>Choose Players</h2>
       <Select options={options} onChange={event => handleChange(event)}/>
-      {playerNames}
+      <div className="player-names">
+        {playerNames}
+      </div>
       <div className="round-button-container">
         <Link to='/scorecard/'
           className='start-round-btn'

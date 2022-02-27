@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { getAllCourses, getFilteredCourses } from '../apiCalls'
+import { getFilteredCourses } from '../apiCalls'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import Card from './Card'
@@ -9,7 +9,7 @@ import '../Styles/Courses.scss'
 
 const Courses = () => {
   const { courseInfo, setCourseInfo } = useContext(CourseInfo)
-  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { setErrorMessage } = useContext(Errors)
   const location = useLocation()
 
   const currentCourses = courseInfo.courses.map(course => {

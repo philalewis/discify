@@ -1,6 +1,5 @@
 import React from 'react'
 import '../Styles/Card.scss'
-import { Link } from 'react-router-dom'
 
 const Card = ({course}) => {
 

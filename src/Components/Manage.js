@@ -1,16 +1,14 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import {addNewPlayer, getAllPlayers} from '../apiCalls'
-import SinglePlayer from './SinglePlayer'
+import { addNewPlayer } from '../apiCalls'
 import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import '../Styles/Manage.scss'
 
-
 const Manage = () => {
   const [nameInput, setNameInput] = useState('')
   const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
-  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { setErrorMessage } = useContext(Errors)
 
   const handleChange = (event) => {
     setNameInput(event.target.value)
@@ -29,14 +27,14 @@ const Manage = () => {
   const playerNames = leagueMembers.length > 0 ? leagueMembers.map(member => {
     return (
       <Link to={`/players/${member.id}`} key={member.id}>
-        <button className='name-button' key={member.id}>{member.name}</button>
+        <button className="player-buttons" key={member.id}>{member.name}</button>
       </Link>
     )
   }) : null
 
   return (
     <>
-      <form>
+      <form className="add-players-form">
         <input
           className='member-input'
           type='text'
@@ -48,8 +46,10 @@ const Manage = () => {
         <button className='add-player-btn' onClick={(event) => addPlayer(event)}>ADD</button>
       </form>
       <div className='manage-players-container'>
-        { playerNames }
-        <Link to='/'> <button className='home-btn'>DONE</button> </Link>
+        <div className="player-names-container">
+          { playerNames }
+        </div>
+        <Link to='/'><button className='home-btn'>DONE</button></Link>
       </div>
     </>
   )

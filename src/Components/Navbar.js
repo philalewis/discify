@@ -8,7 +8,7 @@ import '../Styles/Navbar.scss'
 
 const Navbar = () => {
 
-  const [clicked, setClick] = useState(false)
+  const [ clicked, setClick ] = useState(false)
 
   const toggleClick = () => {
     setClick(!clicked)
@@ -17,18 +17,18 @@ const Navbar = () => {
   return (
     <>
       <nav>
-      <Link to='/'>
-        <img
-          className='logo'
-          src={logo}
-          alt='Discify Logo'
-        />
-      </Link>
-      <button
-        className='dropdown-button'
-        onClick={toggleClick}>
+        <Link to='/'>
+          <img
+            className='logo'
+            src={logo}
+            alt='Discify Logo'
+          />
+        </Link>
+        <button
+          className='dropdown-button'
+          onClick={toggleClick}>
           <FontAwesomeIcon icon={ faBars }/>
-      </button>
+        </button>
       </nav>
       {clicked && <DropdownMenu />}
     </>

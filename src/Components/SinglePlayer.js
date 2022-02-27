@@ -6,7 +6,7 @@ import '../Styles/SinglePlayer.scss'
 
 const SinglePlayer = () => {
 
-  const [ player, setPlayer] = useState({})
+  const [ player, setPlayer ] = useState({})
   const [ verify, setVerify ] = useState(false)
   const params = useParams()
   const toggleVerify = () => {

@@ -28,5 +28,4 @@ describe('Error handling', () => {
     .get('.search-btn').click()
     .get('p').contains('401 Unauthorized')
   })
-
 })

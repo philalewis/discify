@@ -35,7 +35,7 @@ describe('Manage league component', () => {
     cy.get('input').type('Hannah')
       .get('.add-player-btn').click()
 
-    cy.get('.name-button').contains('Hannah')
+    cy.get('.player-buttons').contains('Hannah')
       .get('a').eq(0).click()
 
     cy.get('p').contains('Hannah')
@@ -45,8 +45,8 @@ describe('Manage league component', () => {
     cy.get('input').type('Hannah')
       .get('.add-player-btn').click()
 
-    cy.get('.name-button').contains('Hannah')
-      .get('.name-button').last().click()
+    cy.get('.player-buttons').contains('Hannah')
+      .get('.player-buttons').last().click()
       .get('.remove-player-button').click()
       .get('.yes-button').click()
   })

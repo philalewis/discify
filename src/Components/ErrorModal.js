@@ -3,20 +3,25 @@ import { Errors } from '../Contexts/ErrorsProvider'
 import '../Styles/ErrorModal.scss'
 
 const ErrorModal = () => {
+
   const {errorMessage, setErrorMessage} = useContext(Errors)
-  if(errorMessage){
-  return (
-    <div className='modal'>
-      <article className='modal-box'>
-        <p>{errorMessage}</p>
-        <button className='modal-btn' onClick={() => setErrorMessage({error: null})}>OK</button>
-      </article>
-    </div>
-  )} else {
-    return(
-      <></>
-    )
-  }
+
+  return(
+    <>
+      {
+        errorMessage &&
+        <div className='modal'>
+          <article className='modal-box'>
+            <p>{errorMessage}</p>
+            <button 
+              className='modal-btn' 
+              onClick={() => setErrorMessage({error: null})}
+            >OK</button>
+          </article>
+        </div>
+      }
+    </>
+  )
 }
 
 export default ErrorModal

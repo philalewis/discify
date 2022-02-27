@@ -8,7 +8,7 @@ import '../Styles/Manage.scss'
 const Manage = () => {
   const [nameInput, setNameInput] = useState('')
   const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
-  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { setErrorMessage } = useContext(Errors)
 
   const handleChange = (event) => {
     setNameInput(event.target.value)

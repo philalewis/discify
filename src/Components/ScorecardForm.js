@@ -10,11 +10,11 @@ import { RoundScores } from '../Contexts/RoundScoresProvider'
 import '../Styles/ScoreCardForm.scss'
 
 const ScorecardForm = () => {
-  const { leagueMembers, setLeagueMembers } = useContext(LeagueMembers)
+  const { leagueMembers } = useContext(LeagueMembers)
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
-  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { setErrorMessage } = useContext(Errors)
   const { courseInfo, setCourseInfo } = useContext(CourseInfo)
-  const { scores, setScores } = useContext(RoundScores)
+  const { setScores } = useContext(RoundScores)
   const [ options, setOptions ] = useState([])
 
   useEffect(() => {

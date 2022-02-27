@@ -13,12 +13,14 @@ import EndCurrentRoundModal from './EndCurrentRoundModal'
 
 const Scorecard = () => {
   const { scorecard, setScorecard } = useContext(ScorecardInfo)
-  const [ currentHole, setCurrentHole ] = useState({par: 3, number: 1, distance: 0})
+  const [ currentHole, setCurrentHole ] = useState({
+    par: 3, number: 1, distance: 0
+  })
   const { holeNumber, setHoleNumber } = useContext(HoleNumber)
-  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { setErrorMessage } = useContext(Errors)
   const [ inProgress, setInProgress ] = useState(true)
   const { scores, setScores } = useContext(RoundScores)
-  const { courseInfo, setCourseInfo } = useContext(CourseInfo)
+  const { courseInfo } = useContext(CourseInfo)
   const [ confirm, setConfirm ] = useState(false)
   const navigate = useNavigate()
   
@@ -77,8 +79,14 @@ const Scorecard = () => {
 
   const checkLastHole = () => {
     return inProgress ?
-      <button className='next-hole-btn' onClick={postHoleScores}>NEXT HOLE</button> :
-      <button className='end-round-btn' onClick={postHoleScores}>END ROUND</button>
+      <button
+        className='next-hole-btn'
+        onClick={postHoleScores}
+      >NEXT HOLE</button> :
+      <button
+        className='end-round-btn'
+        onClick={postHoleScores}
+      >END ROUND</button>
   }
 
   const changeScore = (id, score) => {

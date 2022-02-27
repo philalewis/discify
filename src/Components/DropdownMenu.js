@@ -13,7 +13,6 @@ const DropdownMenu = () => {
         <button className='score-link-btn'>SCORECARD</button>
       </Link>
     </div>
-
   )
 }
 

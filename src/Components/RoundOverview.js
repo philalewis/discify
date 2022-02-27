@@ -7,11 +7,11 @@ import CourseHeader from './CourseHeader'
 
 const RoundOverview = () => {
   const location = useLocation()
-  const { leagueMembers, setLeagueMembers} = useContext(LeagueMembers)
+  const { leagueMembers } = useContext(LeagueMembers)
   const sortPlayers = () => {
     location.state.scores.sort((a, b) => a.total_score - b.total_score)
   }
-  const {courseInfo, setCourseInfo} = useContext(CourseInfo)
+  const { courseInfo } = useContext(CourseInfo)
 
   const findPlayerName = (id) => {
     return leagueMembers.find(member => member.id === id).name

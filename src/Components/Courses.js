@@ -9,7 +9,7 @@ import '../Styles/Courses.scss'
 
 const Courses = () => {
   const { courseInfo, setCourseInfo } = useContext(CourseInfo)
-  const { errorMessage, setErrorMessage } = useContext(Errors)
+  const { setErrorMessage } = useContext(Errors)
   const location = useLocation()
 
   const currentCourses = courseInfo.courses.map(course => {

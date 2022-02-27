@@ -2,14 +2,36 @@
 @import './_mixins';
 
 .round-players-container {
-    @include white-container();
+  @include white-container();
+  height: 77vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .player-line-container {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
 }
 
 .go-home {
-  @include button-style()
+  @include button-style();
+  width: 100%;
+}
+
+.bold {
+  font-weight: 650;
+}
+
+.round-date {
+  border-bottom: 2px solid $dark-navy;
+}
+
+.go-home-container {
+  position: absolute;
+  bottom: 5%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  left: 0;
+  right: 0;
 }

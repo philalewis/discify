@@ -17,7 +17,7 @@ View the deployed site [here]()!
 
 ## Abstract
 
-Discify is a Disc Golf League app created to make tracking league games easier.
+Discify is a Disc Golf League app created to make tracking league games easier. Users are able to manage their league by adding and removing members, search for courses, and track players' scores throughout a game. 
 
 
 ## Project Goals

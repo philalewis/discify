@@ -6,7 +6,7 @@ import { HoleNumber } from '../Contexts/HoleNumberProvider'
 import { RoundScores } from '../Contexts/RoundScoresProvider'
 import Player from './Player'
 import { scoreAHole, endRound } from '../apiCalls'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import '../Styles/Scorecard.scss'
 import CourseHeader from './CourseHeader'
 import EndCurrentRoundModal from './EndCurrentRoundModal'
@@ -46,11 +46,9 @@ const Scorecard = () => {
     if(holeNumber === courseInfo.currentCourse.layout.holes.length){
       setInProgress(false)
     }
-    console.log(scorecard)
   }, [holeNumber])
 
   const displayPlayers = () => {
-    console.log(scorecard)
     scorecard.sort((a,b) => a.id - b.id)
     return scorecard.map(player => {
       return (
@@ -127,7 +125,7 @@ const Scorecard = () => {
   }
 
   return (
-    <div>
+    <>
       {
         confirm &&
         <EndCurrentRoundModal
@@ -152,7 +150,7 @@ const Scorecard = () => {
           <button className="end-round-early-btn" onClick={toggleConfirm}>End round early</button>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

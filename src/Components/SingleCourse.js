@@ -4,13 +4,11 @@ import { useLocation, Link } from 'react-router-dom'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { getSingleCourse } from '../apiCalls'
 import '../Styles/SingleCourse.scss'
-import CourseHeader from './CourseHeader'
 
 const SingleCourse = () => {
   const location = useLocation()
   const pathname = location.pathname.split('/')
   const id = pathname[pathname.length - 1]
-
   const [ course, setCourse ] = useState({})
   const [ layout, setLayout ] = useState({})
   const { courseInfo, setCourseInfo } = useContext(CourseInfo)
@@ -59,14 +57,14 @@ const SingleCourse = () => {
           <p><span className="bold">Par:</span> {layout.total_par}</p>
           <p><span className="bold">Distance:</span> {layout.total_distance} ft</p>
           <p><span className="bold">Description:</span> {layout.description}</p>
+          <Link to='/setup_scorecard/'>
+            <button
+              className="choose-course-btn"
+              onClick={handleClick}
+            >CHOOSE COURSE</button>
+          </Link>
         </section>
       }
-      <Link to='/setup_scorecard/'>
-        <button
-          className="choose-course-btn"
-          onClick={handleClick}
-        >CHOOSE COURSE</button>
-      </Link>
     </div>
   )
 }

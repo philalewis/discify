@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { LeagueMembers, LeagueMembersProvider } from '../Contexts/LeagueMembersProvider'
+import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 import Searchbar from './Searchbar'
 import '../Styles/Home.scss'
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import '../Styles/EndCurrentRoundModal.scss'
 
-
 const EndCurrentRoundModal = ({toggleConfirm, endCurrentRound}) => {
 
   return (

@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
 import './Styles/App.scss';
-import { LeagueMembersProvider, LeagueMembers } from './Contexts/LeagueMembersProvider'
-import { CourseInfoProvider, CourseInfo } from './Contexts/CourseInfoProvider'
-import { ErrorsProvider, Errors } from './Contexts/ErrorsProvider'
-import { ScorecardInfoProvider, ScorecardInfo } from './Contexts/ScorecardInfoProvider'
-import { HoleNumberProvider, HoleNumber } from './Contexts/HoleNumberProvider'
-import { RoundScoresProvider, RoundScores } from './Contexts/RoundScoresProvider'
+import { LeagueMembersProvider } from './Contexts/LeagueMembersProvider'
+import { CourseInfoProvider } from './Contexts/CourseInfoProvider'
+import { ErrorsProvider } from './Contexts/ErrorsProvider'
+import { ScorecardInfoProvider } from './Contexts/ScorecardInfoProvider'
+import { HoleNumberProvider } from './Contexts/HoleNumberProvider'
+import { RoundScoresProvider } from './Contexts/RoundScoresProvider'
 import Navbar from './Components/Navbar'
-import DropdownMenu from './Components/DropdownMenu'
 import Manage from './Components/Manage'
-import Stats from './Components/Stats'
 import Scorecard from './Components/Scorecard'
 import Courses from './Components/Courses'
 import ErrorModal from './Components/ErrorModal'
@@ -35,7 +33,6 @@ const App = () => {
                   <Routes>
                     <Route exact path='/' element={<Home />} />
                     <Route exact path='/manage/' element={<Manage />} />
-                    <Route exact path='/stats/' element={<Stats />} />
                     <Route exact path='/scorecard/' element={<Scorecard />} />
                     <Route exact path='/setup_scorecard/' element={<ScorecardForm />} />
                     <Route path='/courses/' element={<Courses />} />

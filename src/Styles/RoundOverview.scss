@@ -3,7 +3,7 @@
 
 .round-players-container {
   @include white-container();
-  height: 77vh;
+
   display: flex;
   flex-direction: column;
 }
@@ -13,13 +13,22 @@
   grid-template-columns: 2fr 1fr 1fr;
 }
 
+.player-info-container {
+  margin: 5% 0;
+}
+
 .go-home {
   @include button-style();
-  width: 100%;
+  width: 75vw;
 }
 
 .bold {
   font-weight: 650;
+}
+
+.round-date,
+.round-par {
+  margin: 0;
 }
 
 .round-date {
@@ -27,11 +36,11 @@
 }
 
 .go-home-container {
-  position: absolute;
-  bottom: 5%;
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
   left: 0;
   right: 0;
+  margin-top: 5%;
 }

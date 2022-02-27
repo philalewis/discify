@@ -1,11 +1,9 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import {addNewPlayer, getAllPlayers} from '../apiCalls'
-import SinglePlayer from './SinglePlayer'
+import { addNewPlayer } from '../apiCalls'
 import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import '../Styles/Manage.scss'
-
 
 const Manage = () => {
   const [nameInput, setNameInput] = useState('')

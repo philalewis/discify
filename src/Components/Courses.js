@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { getAllCourses, getFilteredCourses } from '../apiCalls'
+import { getFilteredCourses } from '../apiCalls'
 import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import Card from './Card'

@@ -29,7 +29,7 @@ const Manage = () => {
   const playerNames = leagueMembers.length > 0 ? leagueMembers.map(member => {
     return (
       <Link to={`/players/${member.id}`} key={member.id}>
-        <button key={member.id}>{member.name}</button>
+        <button className='name-button' key={member.id}>{member.name}</button>
       </Link>
     )
   }) : null

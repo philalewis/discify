@@ -2,7 +2,6 @@ describe('Search courses fuctionality', () => {
 
   it('Should display all courses if there is no input', () => {
       cy.visit('http://localhost:3000')
-
       cy.get('.search-btn').click()
         .get('.course-card').first().click()
   })

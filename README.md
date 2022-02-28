@@ -25,6 +25,7 @@ Discify is a Disc Golf League app created to make tracking league games easier. 
 - Gain competency with React Context API
 - Create a multi-page UX using Router V6
 - Implement Cypress end to end testing
+- Build a functional app without using class components
 
 
 ## Project Specs
@@ -45,6 +46,8 @@ As a user I am able select members to view more information or to remove them fr
 **Search for courses:**
 
 As a user I can search for a course by name.
+
+![giphy-4](https://user-images.githubusercontent.com/42048868/156077249-cad3da22-f3cd-4d44-b08a-95268d912857.gif)
 
 **Start a round:**
 

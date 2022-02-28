@@ -47,11 +47,13 @@ As a user I am able select members to view more information or to remove them fr
 
 As a user I can search for a course by name.
 
-![giphy-4](https://user-images.githubusercontent.com/42048868/156077249-cad3da22-f3cd-4d44-b08a-95268d912857.gif)
+![Search-for-courses](https://user-images.githubusercontent.com/42048868/156077249-cad3da22-f3cd-4d44-b08a-95268d912857.gif)
 
 **Start a round:**
 
 As a user I can select a course, a layout, players and start a round.
+
+![Start-a-round](https://user-images.githubusercontent.com/42048868/156077552-2af847ae-890e-47bf-a761-06782bfc5749.gif)
 
 **Complete a round:**
 
@@ -69,7 +71,8 @@ If an error occurs as a user I am notified with a modal, upon pressing 'Okay' I 
 ## Challenges
 
 - Learning a new version of React Router
-- Implementing React Context api for the first time.
+- Implementing React Context api for the first time
+- Learning how to use Hooks to make a functional app 
 
 ## Future Iterations
 

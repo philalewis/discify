@@ -63,7 +63,9 @@ As a user I can track each players scores throughout a round and am shown a fina
 
 **End a round early:**
 
-As a user I am able to end a round early and shown scores for hols played.
+As a user I am able to end a round early and shown scores for holes played.
+
+![End-a-round-early](https://user-images.githubusercontent.com/42048868/156078521-a40403c3-4357-41d7-adce-ff057fe06dda.gif)
 
 **Error handling:**
 

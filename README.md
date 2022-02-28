@@ -35,13 +35,13 @@ Discify is a Disc Golf League app created to make tracking league games easier. 
 
 As a user I am able to add members to the league
 
-![giphy-3](https://user-images.githubusercontent.com/42048868/156076667-42b2c576-c643-4e94-9092-9f02e79c4e40.gif)
+![Add-members-to-league](https://user-images.githubusercontent.com/42048868/156076667-42b2c576-c643-4e94-9092-9f02e79c4e40.gif)
 
 **Remove a member from the league:**
 
 As a user I am able select members to view more information or to remove them from the league
 
-![giphy-2](https://user-images.githubusercontent.com/42048868/156076200-80132900-1966-4044-ab18-aeb524ad28f2.gif)
+![Remove-a-member-from-the-league](https://user-images.githubusercontent.com/42048868/156076200-80132900-1966-4044-ab18-aeb524ad28f2.gif)
 
 **Search for courses:**
 
@@ -58,6 +58,8 @@ As a user I can select a course, a layout, players and start a round.
 **Complete a round:**
 
 As a user I can track each players scores throughout a round and am shown a final score for each player upon finishing.
+
+![Complete-a-round](https://user-images.githubusercontent.com/42048868/156077975-4be20e77-17f4-4bb3-9dd3-19c4a1eaa899.gif)
 
 **End a round early:**
 

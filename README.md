@@ -42,6 +42,8 @@ As a user I am able to add members to the league
 
 As a user I am able select members to view more information or to remove them from the league
 
+![giphy-2](https://user-images.githubusercontent.com/42048868/156076200-80132900-1966-4044-ab18-aeb524ad28f2.gif)
+
 **Search for courses:**
 
 As a user I can search for a course by name.

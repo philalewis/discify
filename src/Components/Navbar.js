@@ -30,7 +30,7 @@ const Navbar = () => {
           <FontAwesomeIcon icon={ faBars }/>
         </button>
       </nav>
-      {clicked && <DropdownMenu />}
+      {clicked && <DropdownMenu toggleClick={toggleClick}/>}
     </>
   )
 }

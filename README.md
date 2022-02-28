@@ -30,13 +30,11 @@ Discify is a Disc Golf League app created to make tracking league games easier. 
 ## Project Specs
 
 
-**Homepage:**
-
-As a user I can see league scores from the homepage
-
 **Add members to league:**
 
 As a user I am able to add members to the league
+
+![giphy-3](https://user-images.githubusercontent.com/42048868/156076667-42b2c576-c643-4e94-9092-9f02e79c4e40.gif)
 
 **Remove a member from the league:**
 

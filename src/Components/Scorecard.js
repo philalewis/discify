@@ -4,6 +4,7 @@ import { CourseInfo } from '../Contexts/CourseInfoProvider'
 import { Errors } from '../Contexts/ErrorsProvider'
 import { HoleNumber } from '../Contexts/HoleNumberProvider'
 import { RoundScores } from '../Contexts/RoundScoresProvider'
+import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 import Player from './Player'
 import { scoreAHole, endRound } from '../apiCalls'
 import { useNavigate } from 'react-router-dom'
@@ -17,13 +18,14 @@ const Scorecard = () => {
     par: 3, number: 1, distance: 0
   })
   const { holeNumber, setHoleNumber } = useContext(HoleNumber)
+  const { getLeagueMembers } = useContext(LeagueMembers)
   const { setErrorMessage } = useContext(Errors)
   const [ inProgress, setInProgress ] = useState(true)
   const { scores, setScores } = useContext(RoundScores)
   const { courseInfo } = useContext(CourseInfo)
   const [ confirm, setConfirm ] = useState(false)
   const navigate = useNavigate()
-  
+
   const toggleConfirm = () => {
     setConfirm(!confirm)
   }
@@ -127,6 +129,7 @@ const Scorecard = () => {
     endRound(courseInfo.roundId)
     .then(data => {
       setScorecard([])
+      getLeagueMembers()
       navigate('/round-overview', {state: data})
     })
     .catch(error => setErrorMessage(error))

@@ -2,7 +2,7 @@
 
 ## Deployed Site
 
-View the deployed site [here]()!
+View the deployed site [here](https://discify-app.herokuapp.com/)!
 
 ## Table of Contents   
 
@@ -25,48 +25,60 @@ Discify is a Disc Golf League app created to make tracking league games easier. 
 - Gain competency with React Context API
 - Create a multi-page UX using Router V6
 - Implement Cypress end to end testing
+- Build a functional app without using class components
 
 
 ## Project Specs
 
 
-**Homepage:**
-
-As a user I can see league scores from the homepage
-
 **Add members to league:**
 
 As a user I am able to add members to the league
+
+![Add-members-to-league](https://user-images.githubusercontent.com/42048868/156076667-42b2c576-c643-4e94-9092-9f02e79c4e40.gif)
 
 **Remove a member from the league:**
 
 As a user I am able select members to view more information or to remove them from the league
 
+![Remove-a-member-from-the-league](https://user-images.githubusercontent.com/42048868/156076200-80132900-1966-4044-ab18-aeb524ad28f2.gif)
+
 **Search for courses:**
 
 As a user I can search for a course by name.
+
+![Search-for-courses](https://user-images.githubusercontent.com/42048868/156077249-cad3da22-f3cd-4d44-b08a-95268d912857.gif)
 
 **Start a round:**
 
 As a user I can select a course, a layout, players and start a round.
 
+![Start-a-round](https://user-images.githubusercontent.com/42048868/156077552-2af847ae-890e-47bf-a761-06782bfc5749.gif)
+
 **Complete a round:**
 
 As a user I can track each players scores throughout a round and am shown a final score for each player upon finishing.
 
+![Complete-a-round](https://user-images.githubusercontent.com/42048868/156077975-4be20e77-17f4-4bb3-9dd3-19c4a1eaa899.gif)
+
 **End a round early:**
 
-As a user I am able to end a round early and shown scores for hols played.
+As a user I am able to end a round early and shown scores for holes played.
+
+![End-a-round-early](https://user-images.githubusercontent.com/42048868/156078521-a40403c3-4357-41d7-adce-ff057fe06dda.gif)
 
 **Error handling:**
 
 If an error occurs as a user I am notified with a modal, upon pressing 'Okay' I am taken to the home page.
 
+![Error-handling](https://user-images.githubusercontent.com/42048868/156081238-d17e6537-b938-488a-9cdd-1024932be224.gif)
+
 
 ## Challenges
 
 - Learning a new version of React Router
-- Implementing React Context api for the first time.
+- Implementing React Context api for the first time
+- Learning how to use Hooks to make a functional app 
 
 ## Future Iterations
 

@@ -2,16 +2,21 @@ import React, { useContext } from 'react'
 import { deletePlayer } from '../apiCalls'
 import { useNavigate } from 'react-router-dom'
 import { Errors } from '../Contexts/ErrorsProvider'
+import { LeagueMembers } from '../Contexts/LeagueMembersProvider'
 import '../Styles/VerifyDeletionModal.scss'
 
 const VerifyDeletionModal = ({name, id, toggleVerify}) => {
 
+  const { getLeagueMembers } = useContext(LeagueMembers)
   const { setErrorMessage } = useContext(Errors)
   const navigate = useNavigate()
 
   const removePlayer = () => {
     deletePlayer(id)
-    .then (() => navigate('/'))
+    .then (() => {
+      getLeagueMembers()
+      navigate('/')
+    })
     .catch(error => setErrorMessage(error))
   }
 

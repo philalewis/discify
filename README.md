@@ -2,7 +2,7 @@
 
 ## Deployed Site
 
-View the deployed site [here]()!
+View the deployed site [here](https://discify-app.herokuapp.com/)!
 
 ## Table of Contents   
 
@@ -70,6 +70,8 @@ As a user I am able to end a round early and shown scores for holes played.
 **Error handling:**
 
 If an error occurs as a user I am notified with a modal, upon pressing 'Okay' I am taken to the home page.
+
+![Error-handling](https://user-images.githubusercontent.com/42048868/156081238-d17e6537-b938-488a-9cdd-1024932be224.gif)
 
 
 ## Challenges
